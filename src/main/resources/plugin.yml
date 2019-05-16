@@ -1,0 +1,4 @@
+main: me.miuna.paserverfeature.Main
+name: PAServerFeature
+version: 0.1
+api-version: 1.14
