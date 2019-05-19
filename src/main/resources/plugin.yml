@@ -2,3 +2,13 @@ main: me.miunapa.paserverfeature.Main
 name: PAServerFeature
 version: 0.2
 api-version: 1.14
+
+commands:
+  list:
+    description: 回到上一個傳送點
+    usage: /list
+    permission: feature.list
+
+permissions:
+  serverfeature.list:
+    default: true
