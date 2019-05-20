@@ -4,13 +4,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 public class ListPlayer implements CommandExecutor {
-    Plugin plugin = Bukkit.getPluginManager().getPlugin("PATeleport");
-    FileConfiguration config = plugin.getConfig();
+    Plugin plugin = Bukkit.getPluginManager().getPlugin("PAServerFeature");
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -34,8 +32,5 @@ public class ListPlayer implements CommandExecutor {
 
     public ListPlayer() {
         Bukkit.getPluginCommand("list").setExecutor(this);
-        plugin.getConfig().options().copyDefaults(true);
-        plugin.saveConfig();
-        plugin.reloadConfig();
     }
 }

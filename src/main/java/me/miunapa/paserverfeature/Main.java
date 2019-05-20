@@ -16,5 +16,6 @@ public class Main extends JavaPlugin {
     public void init() {
         new DispensePlanting();
         new ListPlayer();
+        new DeathExp();
     }
 }
