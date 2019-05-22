@@ -17,7 +17,7 @@ public class DeathExp implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
-        if (plugin.getConfig().getBoolean("DeathClearExp") == true
+        if (config.getBoolean("DeathClearExp") == true
                 && player.getWorld().getGameRuleValue(GameRule.KEEP_INVENTORY) == true) {
             player.setLevel(0);
             player.setExp(0);

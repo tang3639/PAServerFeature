@@ -17,5 +17,6 @@ public class Main extends JavaPlugin {
         new DispensePlanting();
         new ListPlayer();
         new DeathExp();
+        new TNTExplore();
     }
 }
