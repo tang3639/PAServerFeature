@@ -8,7 +8,13 @@ commands:
     description: 回到上一個傳送點
     usage: /list
     permission: feature.list
+  paf:
+    description: PAServerFeature 功能
+    usage: /paf
+    permission: feature.paf
 
 permissions:
-  serverfeature.list:
+  feature.list:
     default: true
+  feature.paf:
+    default: op
