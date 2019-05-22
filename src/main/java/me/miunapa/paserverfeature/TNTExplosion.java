@@ -10,7 +10,7 @@ import org.bukkit.event.entity.ExplosionPrimeEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 
-public class TNTExplore implements Listener {
+public class TNTExplosion implements Listener {
     Plugin plugin = Bukkit.getPluginManager().getPlugin("PAServerFeature");
     FileConfiguration config = plugin.getConfig();
     Integer taskId = 0;
@@ -47,7 +47,7 @@ public class TNTExplore implements Listener {
         }
     }
 
-    public TNTExplore() {
+    public TNTExplosion() {
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(this, pm.getPlugin("PAServerFeature"));
         plugin.getConfig().addDefault("TNT Explosive.can explosive", true);
