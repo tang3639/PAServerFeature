@@ -18,5 +18,8 @@ public class PhantomSpawn extends Feature implements Listener {
     public PhantomSpawn() {
         pm.registerEvents(this, pm.getPlugin("PAServerFeature"));
         plugin.getConfig().addDefault("PhantomSpawn", false);
+        plugin.getConfig().options().copyDefaults(true);
+        plugin.saveConfig();
+        plugin.reloadConfig();
     }
 }
