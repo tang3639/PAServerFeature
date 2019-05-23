@@ -10,13 +10,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockDispenseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.PluginManager;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 
-public class DispensePlanting implements Listener {
-
+public class DispensePlanting extends Feature implements Listener {
     @EventHandler
     public void onDispenseEvent(BlockDispenseEvent event) {
         Block block = event.getBlock();
@@ -126,7 +123,6 @@ public class DispensePlanting implements Listener {
     }
 
     public DispensePlanting() {
-        PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(this, pm.getPlugin("PAServerFeature"));
     }
 }

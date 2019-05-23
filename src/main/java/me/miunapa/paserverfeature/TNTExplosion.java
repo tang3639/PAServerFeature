@@ -3,16 +3,11 @@ package me.miunapa.paserverfeature;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ExplosionPrimeEvent;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginManager;
 
-public class TNTExplosion implements Listener {
-    Plugin plugin = Bukkit.getPluginManager().getPlugin("PAServerFeature");
-    FileConfiguration config = plugin.getConfig();
+public class TNTExplosion extends Feature implements Listener {
     Integer taskId = 0;
 
     @EventHandler
@@ -48,7 +43,6 @@ public class TNTExplosion implements Listener {
     }
 
     public TNTExplosion() {
-        PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(this, pm.getPlugin("PAServerFeature"));
         plugin.getConfig().addDefault("TNT Explosive.can explosive", true);
         plugin.getConfig().addDefault("TNT Explosive.broadcast", true);

@@ -1,19 +1,12 @@
 package me.miunapa.paserverfeature;
 
-import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginManager;
 
-public class DeathExp implements Listener {
-    Plugin plugin = Bukkit.getPluginManager().getPlugin("PAServerFeature");
-    FileConfiguration config = plugin.getConfig();
-
+public class DeathExp extends Feature implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
@@ -29,7 +22,6 @@ public class DeathExp implements Listener {
     }
 
     public DeathExp() {
-        PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(this, pm.getPlugin("PAServerFeature"));
         plugin.getConfig().addDefault("DeathClearExp", true);
         plugin.getConfig().options().copyDefaults(true);
