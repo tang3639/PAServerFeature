@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
-public class DeathExp extends Feature implements Listener {
+public class PlayerDeath extends Feature implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
@@ -21,7 +21,7 @@ public class DeathExp extends Feature implements Listener {
         }
     }
 
-    public DeathExp() {
+    public PlayerDeath() {
         pm.registerEvents(this, pm.getPlugin("PAServerFeature"));
         plugin.getConfig().addDefault("DeathClearExp", true);
         plugin.getConfig().options().copyDefaults(true);

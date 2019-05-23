@@ -40,7 +40,7 @@ public class Feature implements CommandExecutor {
 
     public void init() {
         Bukkit.getPluginCommand("paf").setExecutor(this);
-        new DeathExp();
+        new PlayerDeath();
         new TNTExplosion();
         new DispensePlanting();
         new PhantomSpawn();
