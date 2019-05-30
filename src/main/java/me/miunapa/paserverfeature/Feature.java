@@ -44,5 +44,6 @@ public class Feature implements CommandExecutor {
         new TNTExplosion();
         new DispensePlanting();
         new PhantomSpawn();
+        new CreeperExplosion();
     }
 }
