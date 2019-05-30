@@ -3,19 +3,20 @@ package me.miunapa.paserverfeature;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.entity.EntityType;
+import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.ExplosionPrimeEvent;
+import org.bukkit.event.entity.EntityExplodeEvent;
 
 public class TNTExplosion extends Feature implements Listener {
     Integer taskId = 0;
 
     @EventHandler
-    public void onExplosionPrimeEvent(ExplosionPrimeEvent event) {
-        if (event.getEntityType().equals(EntityType.PRIMED_TNT)) {
-            if (config.getBoolean("TNT Explosive.can explosive")) {
+    public void onExplosionPrimeEvent(EntityExplodeEvent event) {
+        if (event.getEntity() instanceof TNTPrimed) {
+            if (config.getBoolean("TNT Explosive.explosive")) {
                 if (config.getBoolean("TNT Explosive.broadcast")
+                        && config.getBoolean("TNT Explosive.destroyBlock")
                         && !Bukkit.getScheduler().isQueued(taskId)) {
                     taskId = Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
                         @Override
@@ -26,6 +27,8 @@ public class TNTExplosion extends Feature implements Listener {
                     String message = " §2" + worldConvert(loc.getWorld()) + " " + (int) loc.getX()
                             + " " + (int) loc.getY() + " " + (int) loc.getZ();
                     Bukkit.broadcastMessage("§cTNT Explosion 位於:" + message);
+                } else {
+                    event.blockList().clear();
                 }
             } else {
                 event.setCancelled(true);
@@ -47,7 +50,8 @@ public class TNTExplosion extends Feature implements Listener {
 
     public TNTExplosion() {
         pm.registerEvents(this, pm.getPlugin("PAServerFeature"));
-        plugin.getConfig().addDefault("TNT Explosive.can explosive", true);
+        plugin.getConfig().addDefault("TNT Explosive.explosive", true);
+        plugin.getConfig().addDefault("TNT Explosive.destroyBlock", true);
         plugin.getConfig().addDefault("TNT Explosive.broadcast", true);
         plugin.getConfig().addDefault("TNT Explosive.broadcast delay", 20);
         plugin.getConfig().options().copyDefaults(true);
