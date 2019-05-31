@@ -16,7 +16,6 @@ public class TNTExplosion extends Feature implements Listener {
         if (event.getEntity() instanceof TNTPrimed) {
             if (config.getBoolean("TNT Explosive.explosive")) {
                 if (config.getBoolean("TNT Explosive.broadcast")
-                        && config.getBoolean("TNT Explosive.destroyBlock")
                         && !Bukkit.getScheduler().isQueued(taskId)) {
                     taskId = Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
                         @Override
@@ -27,7 +26,8 @@ public class TNTExplosion extends Feature implements Listener {
                     String message = " §2" + worldConvert(loc.getWorld()) + " " + (int) loc.getX()
                             + " " + (int) loc.getY() + " " + (int) loc.getZ();
                     Bukkit.broadcastMessage("§cTNT Explosion 位於:" + message);
-                } else {
+                }
+                if (config.getBoolean("TNT Explosive.destroyBlock")) {
                     event.blockList().clear();
                 }
             } else {
