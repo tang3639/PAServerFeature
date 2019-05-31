@@ -13,9 +13,10 @@ public class TNTExplosion extends Feature implements Listener {
 
     @EventHandler
     public void onExplosionPrimeEvent(EntityExplodeEvent event) {
-        if (event.getEntity() instanceof TNTPrimed) {
+        if (event.getLocation().getWorld().getName().equals("world")
+                && event.getEntity() instanceof TNTPrimed) {
             if (config.getBoolean("TNT Explosive.explosive")) {
-                if (config.getBoolean("TNT Explosive.destroyBlock")) {
+                if (!config.getBoolean("TNT Explosive.destroyBlock")) {
                     event.blockList().clear();
                 }
                 if (config.getBoolean("TNT Explosive.broadcast")
