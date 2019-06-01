@@ -16,7 +16,7 @@ public class PlayerDeath extends Feature implements Listener {
             player.sendMessage("§d你死亡了...經驗已遺失");
         }
         if (player.getWorld().getGameRuleValue(GameRule.KEEP_INVENTORY) == false) {
-            player.sendMessage("§d請注意! 掉落物僅會存在120秒! 盡快返回此地以避免你的物品消失 &7(如果是死在岩漿或虛空就沒救了)");
+            player.sendMessage("§d請注意! 掉落物僅會存在120秒! 盡快返回此地以避免你的物品消失 \n§7(如果是死在岩漿或虛空就沒救了)");
         }
     }
 
