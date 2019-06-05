@@ -12,7 +12,8 @@ public class PlayerDeath extends Feature implements Listener {
         Player player = event.getEntity();
         if (config.getBoolean("DeathClearExp") == true
                 && player.getWorld().getGameRuleValue(GameRule.KEEP_INVENTORY) == true) {
-            event.setKeepLevel(false);
+            player.setLevel(0);
+            player.setExp(0);
             player.sendMessage("§d你死亡了...經驗已遺失");
         }
         if (player.getWorld().getGameRuleValue(GameRule.KEEP_INVENTORY) == false) {

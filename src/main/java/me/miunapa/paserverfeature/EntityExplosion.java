@@ -2,6 +2,7 @@ package me.miunapa.paserverfeature;
 
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Fireball;
+import org.bukkit.entity.Wither;
 import org.bukkit.entity.WitherSkull;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,7 +13,8 @@ public class EntityExplosion extends Feature implements Listener {
     public void onEntityExplode(EntityExplodeEvent event) {
         if (event.getLocation().getWorld().getName().equals("world")) {
             if (event.getEntity() instanceof Creeper || event.getEntity() instanceof Fireball
-                    || event.getEntity() instanceof WitherSkull) {
+                    || event.getEntity() instanceof WitherSkull
+                    || event.getEntity() instanceof Wither) {
                 event.blockList().clear();
             }
         }

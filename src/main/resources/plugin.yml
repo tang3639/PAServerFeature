@@ -4,17 +4,11 @@ version: 0.2
 api-version: 1.14
 
 commands:
-  list:
-    description: 回到上一個傳送點
-    usage: /list
-    permission: feature.list
   paf:
     description: PAServerFeature 功能
     usage: /paf
     permission: feature.paf
 
 permissions:
-  feature.list:
-    default: true
   feature.paf:
     default: op
