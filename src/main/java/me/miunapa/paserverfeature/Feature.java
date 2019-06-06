@@ -42,5 +42,6 @@ public class Feature implements CommandExecutor {
         new PhantomSpawn();
         new EntityExplosion();
         new Fishing();
+        new BlockPlace();
     }
 }
