@@ -19,13 +19,9 @@ public class Feature implements CommandExecutor {
         if (command.getName().equals("paf")) {
             if (args.length >= 1) {
                 if (args[0].equals("reload")) {
-                    if (sender instanceof Player) {
-                        plugin.reloadConfig();
-                        config = plugin.getConfig();
-                        sender.sendMessage("§aPAServerFeature重新讀取完成");
-                    } else {
-                        System.out.println("PAServerFeature重新讀取完成");
-                    }
+                    plugin.reloadConfig();
+                    config = plugin.getConfig();
+                    sender.sendMessage("§aPAServerFeature重新讀取完成");
                 }
             } else {
                 if (sender instanceof Player) {
