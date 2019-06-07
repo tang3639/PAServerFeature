@@ -8,7 +8,7 @@ import org.bukkit.event.entity.EntitySpawnEvent;
 public class PhantomSpawn extends Feature implements Listener {
     @EventHandler
     public void mobSpawn(EntitySpawnEvent event) {
-        if (config.getBoolean("PhantomSpawn")) {
+        if (!config.getBoolean("PhantomSpawn")) {
             if (event.getEntityType().equals(EntityType.PHANTOM)) {
                 event.setCancelled(true);
             }
