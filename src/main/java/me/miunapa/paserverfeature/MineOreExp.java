@@ -22,7 +22,7 @@ public class MineOreExp extends Feature implements Listener {
         } else if (block.getType() == Material.REDSTONE_ORE) {
             event.setExpToDrop((int) (event.getExpToDrop() * 1.2));
         } else if (block.getType() == Material.SPAWNER) {
-            event.setExpToDrop((int) (event.getExpToDrop() * 10));
+            event.setExpToDrop((int) (event.getExpToDrop() * 6));
         }
     }
 
