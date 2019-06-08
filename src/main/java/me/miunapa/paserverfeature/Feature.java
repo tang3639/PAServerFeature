@@ -43,5 +43,6 @@ public class Feature implements CommandExecutor {
         new EntityExplosion();
         new Fishing();
         new BlockPlace();
+        new MineOreExp();
     }
 }

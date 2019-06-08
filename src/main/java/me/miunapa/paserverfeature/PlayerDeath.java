@@ -1,20 +1,30 @@
 package me.miunapa.paserverfeature;
 
+import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.plugin.Plugin;
 
 public class PlayerDeath extends Feature implements Listener {
+    Plugin plugin = Bukkit.getPluginManager().getPlugin("PAServerFeature");
+    // private static Economy econ = null;
+
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
         if (config.getBoolean("DeathClearExp") == true
                 && player.getWorld().getGameRuleValue(GameRule.KEEP_INVENTORY) == true) {
-            player.setLevel(0);
-            player.setExp(0);
-            player.sendMessage("§d你死亡了...經驗已遺失");
+            Integer level = player.getLevel();
+            if (level > 10) {
+                level = 10;
+                player.setLevel(level);
+                player.sendMessage("§d你死亡了...經驗已剩下§e" + level + "§d等級");
+            } else {
+                player.sendMessage("§7因為等級低於10等所以沒有死亡經驗懲罰");
+            }
         }
         if (player.getWorld().getGameRuleValue(GameRule.KEEP_INVENTORY) == false) {
             player.sendMessage("§d請注意! 掉落物僅會存在120秒! 盡快返回此地以避免你的物品消失 \n§7(如果是死在岩漿或虛空就沒救了)");
@@ -22,6 +32,8 @@ public class PlayerDeath extends Feature implements Listener {
     }
 
     public PlayerDeath() {
+        // econ =
+        // plugin.getServer().getServicesManager().getRegistration(Economy.class).getProvider();
         pm.registerEvents(this, pm.getPlugin("PAServerFeature"));
         plugin.getConfig().addDefault("DeathClearExp", true);
         plugin.getConfig().options().copyDefaults(true);
