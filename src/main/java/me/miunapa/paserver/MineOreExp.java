@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockExpEvent;
 
-public class MineOreExp extends Main implements Listener {
+public class MineOreExp extends FeatureStart implements Listener {
 
     @EventHandler
     public void onBlockExpEvent(BlockExpEvent event) {

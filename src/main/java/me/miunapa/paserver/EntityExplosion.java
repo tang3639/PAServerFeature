@@ -9,7 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 
-public class EntityExplosion extends Main implements Listener {
+public class EntityExplosion extends FeatureStart implements Listener {
     @EventHandler
     public void onEntityExplode(EntityExplodeEvent event) {
         if (event.getLocation().getWorld().getName().equals("world")) {

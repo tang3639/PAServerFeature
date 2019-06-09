@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.Location;
 import org.bukkit.Material;
 
-public class DispensePlanting extends Main implements Listener {
+public class DispensePlanting extends FeatureStart implements Listener {
     @EventHandler
     public void onDispenseEvent(BlockDispenseEvent event) {
         Block block = event.getBlock();

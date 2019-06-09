@@ -8,7 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import net.md_5.bungee.api.ChatColor;
 
-public class BlockPlace extends Main implements Listener {
+public class BlockPlace extends FeatureStart implements Listener {
     List<Material> trippedLogs = new ArrayList<Material>();
     List<Material> axes = new ArrayList<Material>();
 

@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class SpecialWeapon extends Main implements Listener {
+public class SpecialWeapon extends FeatureStart implements Listener {
 
     // 中毒的劍-鑽石劍:30%機率被攻擊的人中毒5秒
     @EventHandler

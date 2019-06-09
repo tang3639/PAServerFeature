@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import net.md_5.bungee.api.ChatColor;
 
-public class Fishing extends Main implements Listener {
+public class Fishing extends FeatureStart implements Listener {
     @EventHandler
     public void onPlayerFish(PlayerFishEvent event) {
         if (event.getCaught() instanceof Item) {

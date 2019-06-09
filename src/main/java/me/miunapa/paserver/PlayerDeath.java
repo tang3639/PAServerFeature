@@ -8,7 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.Plugin;
 
-public class PlayerDeath extends Main implements Listener {
+public class PlayerDeath extends FeatureStart implements Listener {
     Plugin plugin = Bukkit.getPluginManager().getPlugin("PAServer");
     // private static Economy econ = null;
 
@@ -21,7 +21,7 @@ public class PlayerDeath extends Main implements Listener {
             if (level > 10) {
                 level -= 3;
                 player.setLevel(level);
-                player.sendMessage("§d你死亡了...損失了§e 3 §d等經驗 剩下 §e" + level + " §d等");
+                player.sendMessage("§d你死亡了...  §7損失了§e3§7等經驗 剩下§e" + level + "§7等");
             } else {
                 player.sendMessage("§7因為等級低於10等所以沒有死亡經驗懲罰");
             }
