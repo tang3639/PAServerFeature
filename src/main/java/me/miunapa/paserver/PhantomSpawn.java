@@ -1,11 +1,11 @@
-package me.miunapa.paserverfeature;
+package me.miunapa.paserver;
 
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntitySpawnEvent;
 
-public class PhantomSpawn extends Feature implements Listener {
+public class PhantomSpawn extends Main implements Listener {
     @EventHandler
     public void mobSpawn(EntitySpawnEvent event) {
         if (!config.getBoolean("PhantomSpawn")) {

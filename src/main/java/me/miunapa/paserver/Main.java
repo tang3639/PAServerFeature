@@ -1,4 +1,4 @@
-package me.miunapa.paserverfeature;
+package me.miunapa.paserver;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -8,11 +8,21 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
 
-public class Feature implements CommandExecutor {
+public class Main extends JavaPlugin implements CommandExecutor {
     Plugin plugin = Bukkit.getPluginManager().getPlugin("PAServerFeature");
     FileConfiguration config = plugin.getConfig();
     PluginManager pm = Bukkit.getPluginManager();
+
+    @Override
+    public void onEnable() {
+        getLogger().info("PAServerFeature 啟動  Author:MiunaPA");
+    }
+
+    @Override
+    public void onDisable() {
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -44,5 +54,6 @@ public class Feature implements CommandExecutor {
         new Fishing();
         new BlockPlace();
         new MineOreExp();
+        new SpecialWeapon();
     }
 }

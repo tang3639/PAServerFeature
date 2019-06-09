@@ -1,4 +1,4 @@
-package me.miunapa.paserverfeature;
+package me.miunapa.paserver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.Location;
 import org.bukkit.Material;
 
-public class DispensePlanting extends Feature implements Listener {
+public class DispensePlanting extends Main implements Listener {
     @EventHandler
     public void onDispenseEvent(BlockDispenseEvent event) {
         Block block = event.getBlock();

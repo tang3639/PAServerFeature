@@ -1,4 +1,4 @@
-package me.miunapa.paserverfeature;
+package me.miunapa.paserver;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockExpEvent;
 
-public class MineOreExp extends Feature implements Listener {
+public class MineOreExp extends Main implements Listener {
 
     @EventHandler
     public void onBlockExpEvent(BlockExpEvent event) {

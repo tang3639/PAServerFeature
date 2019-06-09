@@ -1,4 +1,4 @@
-package me.miunapa.paserverfeature;
+package me.miunapa.paserver;
 
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Fireball;
@@ -9,7 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 
-public class EntityExplosion extends Feature implements Listener {
+public class EntityExplosion extends Main implements Listener {
     @EventHandler
     public void onEntityExplode(EntityExplodeEvent event) {
         if (event.getLocation().getWorld().getName().equals("world")) {

@@ -1,4 +1,4 @@
-package me.miunapa.paserverfeature;
+package me.miunapa.paserver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import net.md_5.bungee.api.ChatColor;
 
-public class BlockPlace extends Feature implements Listener {
+public class BlockPlace extends Main implements Listener {
     List<Material> trippedLogs = new ArrayList<Material>();
     List<Material> axes = new ArrayList<Material>();
 
