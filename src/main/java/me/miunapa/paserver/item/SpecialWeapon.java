@@ -1,5 +1,6 @@
-package me.miunapa.paserver;
+package me.miunapa.paserver.item;
 
+import me.miunapa.paserver.FeatureStart;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -38,7 +39,7 @@ public class SpecialWeapon extends FeatureStart implements Listener {
     }
 
     public SpecialWeapon() {
-        pm.registerEvents(this, pm.getPlugin("PAServer"));
+        pm.registerEvents(this, plugin);
     }
 }
 

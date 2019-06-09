@@ -1,5 +1,6 @@
-package me.miunapa.paserver;
+package me.miunapa.paserver.block;
 
+import me.miunapa.paserver.FeatureStart;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.Material;
@@ -46,6 +47,6 @@ public class BlockPlace extends FeatureStart implements Listener {
 
     public BlockPlace() {
         trippedLogListInit();
-        pm.registerEvents(this, pm.getPlugin("PAServer"));
+        pm.registerEvents(this, plugin);
     }
 }

@@ -1,5 +1,6 @@
-package me.miunapa.paserver;
+package me.miunapa.paserver.entity;
 
+import me.miunapa.paserver.FeatureStart;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -50,7 +51,7 @@ public class TNTExplosion extends FeatureStart implements Listener {
     }
 
     public TNTExplosion() {
-        pm.registerEvents(this, pm.getPlugin("PAServer"));
+        pm.registerEvents(this, plugin);
         plugin.getConfig().addDefault("TNT Explosive.explosive", true);
         plugin.getConfig().addDefault("TNT Explosive.destroyBlock", true);
         plugin.getConfig().addDefault("TNT Explosive.broadcast", true);

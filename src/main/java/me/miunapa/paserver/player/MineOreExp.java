@@ -1,5 +1,6 @@
-package me.miunapa.paserver;
+package me.miunapa.paserver.player;
 
+import me.miunapa.paserver.FeatureStart;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
@@ -27,6 +28,6 @@ public class MineOreExp extends FeatureStart implements Listener {
     }
 
     public MineOreExp() {
-        pm.registerEvents(this, pm.getPlugin("PAServer"));
+        pm.registerEvents(this, plugin);
     }
 }

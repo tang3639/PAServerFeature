@@ -1,5 +1,6 @@
-package me.miunapa.paserver;
+package me.miunapa.paserver.player;
 
+import me.miunapa.paserver.FeatureStart;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
@@ -27,7 +28,7 @@ public class Fishing extends FeatureStart implements Listener {
     }
 
     public Fishing() {
-        pm.registerEvents(this, pm.getPlugin("PAServer"));
+        pm.registerEvents(this, plugin);
     }
 }
 

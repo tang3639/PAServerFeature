@@ -1,5 +1,6 @@
-package me.miunapa.paserver;
+package me.miunapa.paserver.world;
 
+import me.miunapa.paserver.FeatureStart;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,7 +17,7 @@ public class PhantomSpawn extends FeatureStart implements Listener {
     }
 
     public PhantomSpawn() {
-        pm.registerEvents(this, pm.getPlugin("PAServer"));
+        pm.registerEvents(this, plugin);
         plugin.getConfig().addDefault("PhantomSpawn", false);
         plugin.getConfig().options().copyDefaults(true);
         plugin.saveConfig();

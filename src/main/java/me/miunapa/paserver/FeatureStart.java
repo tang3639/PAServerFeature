@@ -8,11 +8,16 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
+import me.miunapa.paserver.block.*;
+import me.miunapa.paserver.entity.*;
+import me.miunapa.paserver.player.*;
+import me.miunapa.paserver.world.*;
+import me.miunapa.paserver.item.*;
 
 public class FeatureStart implements CommandExecutor {
-    Plugin plugin = Bukkit.getPluginManager().getPlugin("PAServer");
-    FileConfiguration config = plugin.getConfig();
-    PluginManager pm = Bukkit.getPluginManager();
+    public static Plugin plugin = Bukkit.getPluginManager().getPlugin("PAServer");
+    public static FileConfiguration config = plugin.getConfig();
+    public static PluginManager pm = Bukkit.getPluginManager();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -36,12 +41,19 @@ public class FeatureStart implements CommandExecutor {
 
     public void init() {
         Bukkit.getPluginCommand("paf").setExecutor(this);
-        new PlayerDeath();
-        new TNTExplosion();
-        new DispensePlanting();
-        new PhantomSpawn();
-        new EntityExplosion();
-        new Fishing();
+        // block
         new BlockPlace();
+        new DispensePlanting();
+        // entity
+        new EntityExplosion();
+        new TNTExplosion();
+        // item
+        new SpecialWeapon();
+        // player
+        new Fishing();
+        new MineOreExp();
+        new PlayerDeath();
+        // world
+        new PhantomSpawn();
     }
 }

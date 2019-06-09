@@ -1,5 +1,6 @@
-package me.miunapa.paserver;
+package me.miunapa.paserver.block;
 
+import me.miunapa.paserver.FeatureStart;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.event.Listener;
@@ -123,6 +124,6 @@ public class DispensePlanting extends FeatureStart implements Listener {
     }
 
     public DispensePlanting() {
-        pm.registerEvents(this, pm.getPlugin("PAServer"));
+        pm.registerEvents(this, plugin);
     }
 }

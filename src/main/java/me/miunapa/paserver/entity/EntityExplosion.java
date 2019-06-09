@@ -1,5 +1,6 @@
-package me.miunapa.paserver;
+package me.miunapa.paserver.entity;
 
+import me.miunapa.paserver.FeatureStart;
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Wither;
@@ -31,6 +32,6 @@ public class EntityExplosion extends FeatureStart implements Listener {
     }
 
     public EntityExplosion() {
-        pm.registerEvents(this, pm.getPlugin("PAServer"));
+        pm.registerEvents(this, plugin);
     }
 }

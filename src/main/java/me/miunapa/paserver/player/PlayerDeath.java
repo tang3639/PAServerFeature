@@ -1,5 +1,6 @@
-package me.miunapa.paserver;
+package me.miunapa.paserver.player;
 
+import me.miunapa.paserver.FeatureStart;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.entity.Player;
@@ -34,7 +35,7 @@ public class PlayerDeath extends FeatureStart implements Listener {
     public PlayerDeath() {
         // econ =
         // plugin.getServer().getServicesManager().getRegistration(Economy.class).getProvider();
-        pm.registerEvents(this, pm.getPlugin("PAServer"));
+        pm.registerEvents(this, plugin);
         plugin.getConfig().addDefault("DeathClearExp", true);
         plugin.getConfig().options().copyDefaults(true);
         plugin.saveConfig();
