@@ -11,13 +11,13 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin implements CommandExecutor {
-    Plugin plugin = Bukkit.getPluginManager().getPlugin("PAServerFeature");
+    Plugin plugin = Bukkit.getPluginManager().getPlugin("PAServer");
     FileConfiguration config = plugin.getConfig();
     PluginManager pm = Bukkit.getPluginManager();
 
     @Override
     public void onEnable() {
-        getLogger().info("PAServerFeature 啟動  Author:MiunaPA");
+        getLogger().info("PAServer 啟動  Author:MiunaPA");
     }
 
     @Override
@@ -31,7 +31,7 @@ public class Main extends JavaPlugin implements CommandExecutor {
                 if (args[0].equals("reload")) {
                     plugin.reloadConfig();
                     config = plugin.getConfig();
-                    sender.sendMessage("§aPAServerFeature重新讀取完成");
+                    sender.sendMessage("§aPAServer重新讀取完成");
                 }
             } else {
                 if (sender instanceof Player) {

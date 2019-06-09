@@ -27,6 +27,6 @@ public class MineOreExp extends Main implements Listener {
     }
 
     public MineOreExp() {
-        pm.registerEvents(this, pm.getPlugin("PAServerFeature"));
+        pm.registerEvents(this, pm.getPlugin("PAServer"));
     }
 }

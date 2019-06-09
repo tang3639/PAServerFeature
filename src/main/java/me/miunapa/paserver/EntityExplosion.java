@@ -31,6 +31,6 @@ public class EntityExplosion extends Main implements Listener {
     }
 
     public EntityExplosion() {
-        pm.registerEvents(this, pm.getPlugin("PAServerFeature"));
+        pm.registerEvents(this, pm.getPlugin("PAServer"));
     }
 }

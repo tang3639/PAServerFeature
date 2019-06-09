@@ -27,7 +27,7 @@ public class Fishing extends Main implements Listener {
     }
 
     public Fishing() {
-        pm.registerEvents(this, pm.getPlugin("PAServerFeature"));
+        pm.registerEvents(this, pm.getPlugin("PAServer"));
     }
 }
 

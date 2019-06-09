@@ -123,6 +123,6 @@ public class DispensePlanting extends Main implements Listener {
     }
 
     public DispensePlanting() {
-        pm.registerEvents(this, pm.getPlugin("PAServerFeature"));
+        pm.registerEvents(this, pm.getPlugin("PAServer"));
     }
 }

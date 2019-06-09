@@ -16,7 +16,7 @@ public class PhantomSpawn extends Main implements Listener {
     }
 
     public PhantomSpawn() {
-        pm.registerEvents(this, pm.getPlugin("PAServerFeature"));
+        pm.registerEvents(this, pm.getPlugin("PAServer"));
         plugin.getConfig().addDefault("PhantomSpawn", false);
         plugin.getConfig().options().copyDefaults(true);
         plugin.saveConfig();

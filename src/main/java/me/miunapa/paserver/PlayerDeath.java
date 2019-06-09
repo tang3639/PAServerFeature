@@ -9,7 +9,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.Plugin;
 
 public class PlayerDeath extends Main implements Listener {
-    Plugin plugin = Bukkit.getPluginManager().getPlugin("PAServerFeature");
+    Plugin plugin = Bukkit.getPluginManager().getPlugin("PAServer");
     // private static Economy econ = null;
 
     @EventHandler
@@ -34,7 +34,7 @@ public class PlayerDeath extends Main implements Listener {
     public PlayerDeath() {
         // econ =
         // plugin.getServer().getServicesManager().getRegistration(Economy.class).getProvider();
-        pm.registerEvents(this, pm.getPlugin("PAServerFeature"));
+        pm.registerEvents(this, pm.getPlugin("PAServer"));
         plugin.getConfig().addDefault("DeathClearExp", true);
         plugin.getConfig().options().copyDefaults(true);
         plugin.saveConfig();

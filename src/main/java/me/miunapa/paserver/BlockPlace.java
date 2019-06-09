@@ -46,6 +46,6 @@ public class BlockPlace extends Main implements Listener {
 
     public BlockPlace() {
         trippedLogListInit();
-        pm.registerEvents(this, pm.getPlugin("PAServerFeature"));
+        pm.registerEvents(this, pm.getPlugin("PAServer"));
     }
 }

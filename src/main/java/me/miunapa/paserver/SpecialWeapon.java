@@ -38,7 +38,7 @@ public class SpecialWeapon extends Main implements Listener {
     }
 
     public SpecialWeapon() {
-        pm.registerEvents(this, pm.getPlugin("PAServerFeature"));
+        pm.registerEvents(this, pm.getPlugin("PAServer"));
     }
 }
 

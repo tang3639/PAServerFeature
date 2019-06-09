@@ -50,7 +50,7 @@ public class TNTExplosion extends Main implements Listener {
     }
 
     public TNTExplosion() {
-        pm.registerEvents(this, pm.getPlugin("PAServerFeature"));
+        pm.registerEvents(this, pm.getPlugin("PAServer"));
         plugin.getConfig().addDefault("TNT Explosive.explosive", true);
         plugin.getConfig().addDefault("TNT Explosive.destroyBlock", true);
         plugin.getConfig().addDefault("TNT Explosive.broadcast", true);
