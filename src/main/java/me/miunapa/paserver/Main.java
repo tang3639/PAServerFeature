@@ -17,6 +17,19 @@ public class Main extends JavaPlugin implements CommandExecutor {
 
     @Override
     public void onEnable() {
+        // 指令
+        Bukkit.getPluginCommand("paf").setExecutor(this);
+        // 功能啟動
+        new PlayerDeath();
+        new TNTExplosion();
+        new DispensePlanting();
+        new PhantomSpawn();
+        new EntityExplosion();
+        new Fishing();
+        new BlockPlace();
+        new MineOreExp();
+        new SpecialWeapon();
+        // 發送訊息
         getLogger().info("PAServer 啟動  Author:MiunaPA");
     }
 
@@ -42,18 +55,5 @@ public class Main extends JavaPlugin implements CommandExecutor {
             }
         }
         return true;
-    }
-
-    public void init() {
-        Bukkit.getPluginCommand("paf").setExecutor(this);
-        new PlayerDeath();
-        new TNTExplosion();
-        new DispensePlanting();
-        new PhantomSpawn();
-        new EntityExplosion();
-        new Fishing();
-        new BlockPlace();
-        new MineOreExp();
-        new SpecialWeapon();
     }
 }
