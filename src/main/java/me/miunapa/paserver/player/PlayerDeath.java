@@ -24,9 +24,10 @@ public class PlayerDeath extends FeatureStart implements Listener {
                 player.setLevel(level);
                 player.sendMessage("§d你死亡了...  §7損失了§e3§7等經驗 剩下§e" + level + "§7等");
             } else if (level <= 13 && level > 10) {
+                Integer less = level - 10;
                 level = 10;
                 player.setLevel(level);
-                player.sendMessage("§d你死亡了...  §7損失了§e3§7等經驗 剩下§e" + level + "§7等");
+                player.sendMessage("§d你死亡了...  §7損失了§e" + less + "§7等經驗 剩下§e" + level + "§7等");
             } else {
                 player.sendMessage("§7因為等級未超過10等所以沒有死亡經驗懲罰");
             }
