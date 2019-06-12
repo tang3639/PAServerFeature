@@ -19,12 +19,16 @@ public class PlayerDeath extends FeatureStart implements Listener {
         if (config.getBoolean("DeathClearExp") == true
                 && player.getWorld().getGameRuleValue(GameRule.KEEP_INVENTORY) == true) {
             Integer level = player.getLevel();
-            if (level > 10) {
+            if (level > 13) {
                 level -= 3;
                 player.setLevel(level);
                 player.sendMessage("§d你死亡了...  §7損失了§e3§7等經驗 剩下§e" + level + "§7等");
+            } else if (level <= 13 && level > 10) {
+                level = 10;
+                player.setLevel(level);
+                player.sendMessage("§d你死亡了...  §7損失了§e3§7等經驗 剩下§e" + level + "§7等");
             } else {
-                player.sendMessage("§7因為等級低於10等所以沒有死亡經驗懲罰");
+                player.sendMessage("§7因為等級未超過10等所以沒有死亡經驗懲罰");
             }
         }
         if (player.getWorld().getGameRuleValue(GameRule.KEEP_INVENTORY) == false) {
