@@ -51,7 +51,6 @@ public class FeatureStart implements CommandExecutor {
         new SpecialWeapon();
         // player
         new Fishing();
-        new MineOreExp();
         new PlayerDeath();
         // world
         new PhantomSpawn();
