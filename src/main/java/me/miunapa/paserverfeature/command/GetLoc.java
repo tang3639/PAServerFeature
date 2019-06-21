@@ -1,4 +1,4 @@
-package me.miunapa.paserver.command;
+package me.miunapa.paserverfeature.command;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

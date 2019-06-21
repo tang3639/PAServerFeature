@@ -1,6 +1,6 @@
-package me.miunapa.paserver.player;
+package me.miunapa.paserverfeature.player;
 
-import me.miunapa.paserver.FeatureStart;
+import me.miunapa.paserverfeature.FeatureStart;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.entity.Player;
@@ -10,7 +10,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.Plugin;
 
 public class PlayerDeath extends FeatureStart implements Listener {
-    Plugin plugin = Bukkit.getPluginManager().getPlugin("PAServer");
+    Plugin plugin = Bukkit.getPluginManager().getPlugin("paserverfeature");
     // private static Economy econ = null;
 
     @EventHandler

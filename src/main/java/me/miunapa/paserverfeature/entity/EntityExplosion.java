@@ -1,6 +1,6 @@
-package me.miunapa.paserver.entity;
+package me.miunapa.paserverfeature.entity;
 
-import me.miunapa.paserver.FeatureStart;
+import me.miunapa.paserverfeature.FeatureStart;
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Wither;

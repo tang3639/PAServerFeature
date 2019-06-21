@@ -1,4 +1,4 @@
-package me.miunapa.paserver;
+package me.miunapa.paserverfeature;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -8,14 +8,13 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
-import me.miunapa.paserver.block.*;
-import me.miunapa.paserver.entity.*;
-import me.miunapa.paserver.player.*;
-import me.miunapa.paserver.world.*;
-import me.miunapa.paserver.item.*;
+import me.miunapa.paserverfeature.block.*;
+import me.miunapa.paserverfeature.entity.*;
+import me.miunapa.paserverfeature.player.*;
+import me.miunapa.paserverfeature.world.*;
 
 public class FeatureStart implements CommandExecutor {
-    public static Plugin plugin = Bukkit.getPluginManager().getPlugin("PAServer");
+    public static Plugin plugin = Bukkit.getPluginManager().getPlugin("paserverfeature");
     public static FileConfiguration config = plugin.getConfig();
     public static PluginManager pm = Bukkit.getPluginManager();
 
@@ -26,7 +25,7 @@ public class FeatureStart implements CommandExecutor {
                 if (args[0].equals("reload")) {
                     plugin.reloadConfig();
                     config = plugin.getConfig();
-                    sender.sendMessage("§aPAServer重新讀取完成");
+                    sender.sendMessage("§apaserverfeature重新讀取完成");
                 }
             } else {
                 if (sender instanceof Player) {
@@ -47,8 +46,6 @@ public class FeatureStart implements CommandExecutor {
         // entity
         new EntityExplosion();
         new TNTExplosion();
-        // item
-        new SpecialWeapon();
         // player
         new Fishing();
         new PlayerDeath();

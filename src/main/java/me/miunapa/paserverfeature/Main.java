@@ -1,4 +1,4 @@
-package me.miunapa.paserver;
+package me.miunapa.paserverfeature;
 
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -8,7 +8,7 @@ public class Main extends JavaPlugin implements CommandExecutor {
     public void onEnable() {
         FeatureStart featureStart = new FeatureStart();
         featureStart.init();
-        getLogger().info("PAServer 啟動  Author:MiunaPA");
+        getLogger().info("paserverfeature 啟動  Author:MiunaPA");
     }
 
     @Override

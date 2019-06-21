@@ -1,4 +1,4 @@
-package me.miunapa.paserver;
+package me.miunapa.paserverfeature;
 
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;

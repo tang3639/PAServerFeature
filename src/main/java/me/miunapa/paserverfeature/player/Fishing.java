@@ -1,6 +1,6 @@
-package me.miunapa.paserver.player;
+package me.miunapa.paserverfeature.player;
 
-import me.miunapa.paserver.FeatureStart;
+import me.miunapa.paserverfeature.FeatureStart;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;

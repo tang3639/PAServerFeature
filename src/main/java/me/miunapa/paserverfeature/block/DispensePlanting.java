@@ -1,6 +1,6 @@
-package me.miunapa.paserver.block;
+package me.miunapa.paserverfeature.block;
 
-import me.miunapa.paserver.FeatureStart;
+import me.miunapa.paserverfeature.FeatureStart;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.event.Listener;

@@ -1,20 +1,20 @@
-main: me.miunapa.paserver.Main
-name: PAServer
+main: me.miunapa.paserverfeature.Main
+name: paserverfeature
 version: 0.2
 api-version: 1.14
 
 commands:
   paf:
-    description: PAServer 功能
+    description: paserverfeature 功能
     usage: /paf
-    permission: paserver.paf
+    permission: paserverfeature.paf
   getloc:
     description: 獲取
     usage: /getloc
-    permission: paserver.getloc
+    permission: paserverfeature.getloc
 
 permissions:
-  paserver.paf:
+  paserverfeature.paf:
     default: op
-  paserver.getloc:
+  paserverfeature.getloc:
     default: op

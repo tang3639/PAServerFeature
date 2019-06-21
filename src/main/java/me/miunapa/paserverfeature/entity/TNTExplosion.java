@@ -1,6 +1,6 @@
-package me.miunapa.paserver.entity;
+package me.miunapa.paserverfeature.entity;
 
-import me.miunapa.paserver.FeatureStart;
+import me.miunapa.paserverfeature.FeatureStart;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
