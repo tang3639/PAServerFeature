@@ -1,11 +1,11 @@
 main: me.miunapa.paserverfeature.Main
-name: paserverfeature
+name: PAServerFeature
 version: 0.2
 api-version: 1.14
 
 commands:
   paf:
-    description: paserverfeature 功能
+    description: PAServerFeature 功能
     usage: /paf
     permission: paserverfeature.paf
   getloc:
