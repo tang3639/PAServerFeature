@@ -1,17 +1,13 @@
 package me.miunapa.paserverfeature.player;
 
 import me.miunapa.paserverfeature.FeatureStart;
-import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.plugin.Plugin;
 
 public class PlayerDeath extends FeatureStart implements Listener {
-    Plugin plugin = Bukkit.getPluginManager().getPlugin("paserverfeature");
-    // private static Economy econ = null;
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
@@ -38,8 +34,6 @@ public class PlayerDeath extends FeatureStart implements Listener {
     }
 
     public PlayerDeath() {
-        // econ =
-        // plugin.getServer().getServicesManager().getRegistration(Economy.class).getProvider();
         pm.registerEvents(this, plugin);
         plugin.getConfig().addDefault("DeathClearExp", true);
         plugin.getConfig().options().copyDefaults(true);

@@ -8,7 +8,7 @@ public class Main extends JavaPlugin implements CommandExecutor {
     public void onEnable() {
         FeatureStart featureStart = new FeatureStart();
         featureStart.init();
-        getLogger().info("paserverfeature 啟動  Author:MiunaPA");
+        getLogger().info("PAServerFeature 啟動  Author:MiunaPA");
     }
 
     @Override

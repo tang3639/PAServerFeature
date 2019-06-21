@@ -14,7 +14,7 @@ import me.miunapa.paserverfeature.player.*;
 import me.miunapa.paserverfeature.world.*;
 
 public class FeatureStart implements CommandExecutor {
-    public static Plugin plugin = Bukkit.getPluginManager().getPlugin("paserverfeature");
+    public static Plugin plugin = Bukkit.getPluginManager().getPlugin("PAServerFeature");
     public static FileConfiguration config = plugin.getConfig();
     public static PluginManager pm = Bukkit.getPluginManager();
 
