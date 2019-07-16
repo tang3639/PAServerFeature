@@ -42,7 +42,7 @@ public class FeatureStart implements CommandExecutor {
         Bukkit.getPluginCommand("paf").setExecutor(this);
         // block
         new BlockPlace();
-        new DispensePlanting();
+        // new DispensePlanting();
         // entity
         new EntityExplosion();
         new TNTExplosion();
