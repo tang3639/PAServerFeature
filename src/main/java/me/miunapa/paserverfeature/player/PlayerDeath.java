@@ -1,6 +1,9 @@
 package me.miunapa.paserverfeature.player;
 
 import me.miunapa.paserverfeature.FeatureStart;
+import me.miunapa.paserverfeature.Main;
+import net.md_5.bungee.api.ChatColor;
+import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.GameRule;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -29,7 +32,21 @@ public class PlayerDeath extends FeatureStart implements Listener {
             }
         }
         if (player.getWorld().getGameRuleValue(GameRule.KEEP_INVENTORY) == false) {
-            player.sendMessage("§d請注意! 掉落物僅會存在120秒! 盡快返回此地以避免你的物品消失 \n§7(如果是死在岩漿或虛空就沒救了)");
+            Double bal = Main.getEconomy().getBalance(player);
+            if (bal >= 20.0) {
+                bal -= 20;
+                EconomyResponse r = Main.getEconomy().withdrawPlayer(player, 20);
+                if (r.transactionSuccess()) {
+                    event.setKeepInventory(true);
+                    player.sendMessage(ChatColor.GOLD + "從你帳號扣除了20元,防止了死亡噴裝 " + ChatColor.YELLOW
+                            + "你剩下 " + ChatColor.RED + bal + ChatColor.YELLOW + " 元");
+                } else {
+                    player.sendMessage(String.format("錯誤: %s", r.errorMessage));
+                }
+            } else {
+                player.sendMessage(ChatColor.GOLD + "帳號餘額不到20元! 你的物品噴掉了!");
+                player.sendMessage("§d請注意! 掉落物僅會存在120秒! 盡快返回此地以避免你的物品消失");
+            } ;
         }
     }
 
