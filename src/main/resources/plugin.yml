@@ -12,9 +12,15 @@ commands:
     description: 獲取
     usage: /getloc
     permission: paserverfeature.getloc
+  keep:
+    description: 死亡防止噴裝系統
+    usage: /keep
+    permission: paserverfeature.keep
 
 permissions:
   paserverfeature.paf:
     default: op
   paserverfeature.getloc:
     default: op
+  paserverfeature.keep:
+    default: true

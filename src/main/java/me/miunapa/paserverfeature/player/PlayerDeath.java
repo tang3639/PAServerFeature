@@ -4,13 +4,26 @@ import me.miunapa.paserverfeature.FeatureStart;
 import me.miunapa.paserverfeature.Main;
 import net.md_5.bungee.api.ChatColor;
 import net.milkbowl.vault.economy.EconomyResponse;
+import java.io.File;
+import java.io.IOException;
+import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.plugin.Plugin;
 
-public class PlayerDeath extends FeatureStart implements Listener {
+public class PlayerDeath extends FeatureStart implements Listener, CommandExecutor {
+    Plugin plugin = Bukkit.getPluginManager().getPlugin("PAServerFeature");
+    FileConfiguration config = plugin.getConfig();
+    File keepFile = new File(plugin.getDataFolder(), "keep.yml");
+    YamlConfiguration keep = YamlConfiguration.loadConfiguration(keepFile);
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
@@ -32,30 +45,80 @@ public class PlayerDeath extends FeatureStart implements Listener {
             }
         }
         if (player.getWorld().getGameRuleValue(GameRule.KEEP_INVENTORY) == false) {
-            Double bal = Main.getEconomy().getBalance(player);
-            if (bal >= 20.0) {
-                bal -= 20;
-                EconomyResponse r = Main.getEconomy().withdrawPlayer(player, 20);
-                if (r.transactionSuccess()) {
-                    event.setKeepInventory(true);
-                    player.sendMessage(ChatColor.GOLD + "從你帳號扣除了20元,防止了死亡噴裝 " + ChatColor.YELLOW
-                            + "你剩下 " + ChatColor.RED + bal + ChatColor.YELLOW + " 元");
+            if (keep.getBoolean(player.getUniqueId().toString())) {
+                Double bal = Main.getEconomy().getBalance(player);
+                if (bal >= 100.0) {
+                    bal -= 100;
+                    EconomyResponse r = Main.getEconomy().withdrawPlayer(player, 100);
+                    if (r.transactionSuccess()) {
+                        event.setKeepInventory(true);
+                        player.sendMessage(
+                                ChatColor.GOLD + "從你帳號扣除了100元,防止了死亡噴裝 " + ChatColor.YELLOW + "你剩下 "
+                                        + ChatColor.RED + bal + ChatColor.YELLOW + " 元");
+                    } else {
+                        player.sendMessage(String.format("錯誤: %s", r.errorMessage));
+                    }
                 } else {
-                    player.sendMessage(String.format("錯誤: %s", r.errorMessage));
-                }
+                    player.sendMessage(ChatColor.GOLD + "帳號餘額不到100元! 你的物品噴掉了!");
+                    player.sendMessage("§d請注意! 掉落物僅會存在120秒! 盡快返回此地以避免你的物品消失");
+                } ;
             } else {
-                player.sendMessage(ChatColor.GOLD + "帳號餘額不到20元! 你的物品噴掉了!");
                 player.sendMessage("§d請注意! 掉落物僅會存在120秒! 盡快返回此地以避免你的物品消失");
-            } ;
+            }
+        } else {
+            player.sendMessage("§d請注意! 掉落物僅會存在120秒! 盡快返回此地以避免你的物品消失");
+        }
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (sender instanceof Player) {
+            if (command.getName().equals("keep")) {
+                Player player = (Player) sender;
+                String playerUUID = player.getUniqueId().toString();
+                Boolean deathKeep = true;
+                deathKeep = keep.getBoolean(playerUUID);
+                if (keep.contains(playerUUID) == true) {
+                    deathKeep = keep.getBoolean(playerUUID);
+                }
+                if (deathKeep) {
+                    player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD + "防噴裝系統"
+                            + ChatColor.GRAY + "] " + ChatColor.RED + "已關閉 現在在會噴裝的世界死亡 會照常噴裝!");
+                    deathKeep = false;
+                    keep.set(playerUUID, deathKeep);
+                } else {
+                    player.sendMessage(
+                            ChatColor.GRAY + "[" + ChatColor.GOLD + "防噴裝系統" + ChatColor.GRAY + "] "
+                                    + ChatColor.GREEN + "已開啟 現在在會噴裝的世界死亡 " + ChatColor.YELLOW
+                                    + "會自動扣除100塊來防止噴裝" + ChatColor.GRAY + "(若金額不足還是會照噴)");
+                    deathKeep = true;
+                    keep.set(playerUUID, deathKeep);
+                }
+                saveKeepFile();
+            }
+        }
+        return true;
+    }
+
+    public void saveKeepFile() {
+        try {
+            keep.save(keepFile);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     public PlayerDeath() {
         pm.registerEvents(this, plugin);
+        Bukkit.getPluginCommand("keep").setExecutor(this);
+        if (!keepFile.exists()) {
+            saveKeepFile();
+        }
         plugin.getConfig().addDefault("DeathClearExp", true);
         plugin.getConfig().options().copyDefaults(true);
         plugin.saveConfig();
         plugin.reloadConfig();
+
     }
 
     public Double getLevelTotalExp(Integer level, Integer nowExp) {
