@@ -47,19 +47,18 @@ public class PlayerDeath extends FeatureStart implements Listener, CommandExecut
         if (player.getWorld().getGameRuleValue(GameRule.KEEP_INVENTORY) == false) {
             if (keep.getBoolean(player.getUniqueId().toString())) {
                 Double bal = Main.getEconomy().getBalance(player);
-                if (bal >= 100.0) {
-                    bal -= 100;
-                    EconomyResponse r = Main.getEconomy().withdrawPlayer(player, 100);
+                if (bal >= 50.0) {
+                    bal -= 50;
+                    EconomyResponse r = Main.getEconomy().withdrawPlayer(player, 50);
                     if (r.transactionSuccess()) {
                         event.setKeepInventory(true);
-                        player.sendMessage(
-                                ChatColor.GOLD + "從你帳號扣除了100元,防止了死亡噴裝 " + ChatColor.YELLOW + "你剩下 "
-                                        + ChatColor.RED + bal + ChatColor.YELLOW + " 元");
+                        player.sendMessage(ChatColor.GOLD + "從你帳號扣除了50元,防止了死亡噴裝 " + ChatColor.YELLOW
+                                + "你剩下 " + ChatColor.RED + bal + ChatColor.YELLOW + " 元");
                     } else {
                         player.sendMessage(String.format("錯誤: %s", r.errorMessage));
                     }
                 } else {
-                    player.sendMessage(ChatColor.GOLD + "帳號餘額不到100元! 你的物品噴掉了!");
+                    player.sendMessage(ChatColor.GOLD + "帳號餘額不到50元! 你的物品噴掉了!");
                     player.sendMessage("§d請注意! 掉落物僅會存在120秒! 盡快返回此地以避免你的物品消失");
                 } ;
             } else {
