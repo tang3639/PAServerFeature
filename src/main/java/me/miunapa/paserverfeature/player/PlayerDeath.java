@@ -17,6 +17,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.plugin.Plugin;
 
 public class PlayerDeath extends FeatureStart implements Listener, CommandExecutor {
@@ -64,8 +65,30 @@ public class PlayerDeath extends FeatureStart implements Listener, CommandExecut
             } else {
                 player.sendMessage("§d請注意! 掉落物僅會存在120秒! 盡快返回此地以避免你的物品消失");
             }
-        } else {
-            player.sendMessage("§d請注意! 掉落物僅會存在120秒! 盡快返回此地以避免你的物品消失");
+        }
+    }
+
+    @EventHandler
+    public void onPlayerChanged(PlayerChangedWorldEvent event) {
+        Player player = event.getPlayer();
+        String world = player.getLocation().getWorld().getName();
+        if (world.equals("world_nether") || world.equals("world_the_end")) {
+            Boolean deathKeep = true;
+            String playerUUID = player.getUniqueId().toString();
+            if (keep.contains(playerUUID)) {
+                deathKeep = keep.getBoolean(playerUUID);
+            } else {
+                deathKeep = true;
+                keep.set(playerUUID, deathKeep);
+                saveKeepFile();
+            }
+            if (keep.getBoolean(playerUUID)) {
+                player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD + "防噴裝系統" + ChatColor.GRAY
+                        + "] " + ChatColor.GREEN + "目前為開啟" + ChatColor.GRAY + "(輸入/keep 切換)");
+            } else {
+                player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD + "防噴裝系統" + ChatColor.GRAY
+                        + "] " + ChatColor.RED + "目前為關閉" + ChatColor.GRAY + "(輸入/keep 切換)");
+            }
         }
     }
 
