@@ -53,6 +53,7 @@ public class PlayerDeath extends FeatureStart implements Listener, CommandExecut
                     EconomyResponse r = Main.getEconomy().withdrawPlayer(player, 50);
                     if (r.transactionSuccess()) {
                         event.setKeepInventory(true);
+                        event.setKeepLevel(true);
                         player.sendMessage(ChatColor.GOLD + "從你帳號扣除了50元,防止了死亡噴裝 " + ChatColor.YELLOW
                                 + "你剩下 " + ChatColor.RED + bal + ChatColor.YELLOW + " 元");
                     } else {
@@ -109,10 +110,9 @@ public class PlayerDeath extends FeatureStart implements Listener, CommandExecut
                     deathKeep = false;
                     keep.set(playerUUID, deathKeep);
                 } else {
-                    player.sendMessage(
-                            ChatColor.GRAY + "[" + ChatColor.GOLD + "防噴裝系統" + ChatColor.GRAY + "] "
-                                    + ChatColor.GREEN + "已開啟 現在在會噴裝的世界死亡 " + ChatColor.YELLOW
-                                    + "會自動扣除50塊來防止噴裝" + ChatColor.GRAY + "(若金額不足還是會照噴)");
+                    player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GOLD + "防噴裝系統"
+                            + ChatColor.GRAY + "] " + ChatColor.GREEN + "已開啟 現在在會噴裝的世界死亡 "
+                            + ChatColor.YELLOW + "會自動扣除50塊來防止噴裝" + ChatColor.GRAY + "(若金額不足還是會照噴)");
                     deathKeep = true;
                     keep.set(playerUUID, deathKeep);
                 }
