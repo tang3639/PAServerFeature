@@ -112,7 +112,7 @@ public class PlayerDeath extends FeatureStart implements Listener, CommandExecut
                     player.sendMessage(
                             ChatColor.GRAY + "[" + ChatColor.GOLD + "防噴裝系統" + ChatColor.GRAY + "] "
                                     + ChatColor.GREEN + "已開啟 現在在會噴裝的世界死亡 " + ChatColor.YELLOW
-                                    + "會自動扣除100塊來防止噴裝" + ChatColor.GRAY + "(若金額不足還是會照噴)");
+                                    + "會自動扣除50塊來防止噴裝" + ChatColor.GRAY + "(若金額不足還是會照噴)");
                     deathKeep = true;
                     keep.set(playerUUID, deathKeep);
                 }
