@@ -27,7 +27,7 @@ public class Hat implements CommandExecutor {
                 return true;
             }
             if (hand.getAmount() != 1) {
-                player.sendMessage(prefix + ChatColor.RED + "你手上物品數量>1 無法穿上");
+                player.sendMessage(prefix + ChatColor.RED + "你手上物品數量超過一個 無法穿上");
                 return true;
             }
             if (hat != null && hat.getType() != Material.AIR) {
