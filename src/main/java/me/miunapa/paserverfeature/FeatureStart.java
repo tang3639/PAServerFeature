@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import me.miunapa.paserverfeature.block.*;
+import me.miunapa.paserverfeature.command.*;
 import me.miunapa.paserverfeature.entity.*;
 import me.miunapa.paserverfeature.player.*;
 import me.miunapa.paserverfeature.world.*;
@@ -43,6 +44,8 @@ public class FeatureStart implements CommandExecutor {
         // block
         new BlockPlace();
         // new DispensePlanting();
+        // command
+        new Hat();
         // entity
         new EntityExplosion();
         new TNTExplosion();

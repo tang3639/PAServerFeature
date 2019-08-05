@@ -8,12 +8,12 @@ commands:
     description: PAServerFeature 功能
     usage: /paf
     permission: paserverfeature.paf
-  getloc:
-    description: 獲取
-    usage: /getloc
-    permission: paserverfeature.getloc
+  hat:
+    description: 戴帽子
+    usage: /hat
+    permission: paserverfeature.hat
 permissions:
   paserverfeature.paf:
     default: op
-  paserverfeature.getloc:
-    default: op
+  paserverfeature.hat:
+    default: true
