@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.TNTPrimed;
+import org.bukkit.entity.minecart.ExplosiveMinecart;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityExplodeEvent;
@@ -15,7 +16,8 @@ public class TNTExplosion extends FeatureStart implements Listener {
     @EventHandler
     public void onExplosionPrimeEvent(EntityExplodeEvent event) {
         if (event.getLocation().getWorld().getName().equals("world")
-                && event.getEntity() instanceof TNTPrimed) {
+                && (event.getEntity() instanceof TNTPrimed
+                        || event.getEntity() instanceof ExplosiveMinecart)) {
             if (config.getBoolean("TNT Explosive.explosive")) {
                 if (!config.getBoolean("TNT Explosive.destroyBlock")) {
                     event.blockList().clear();
