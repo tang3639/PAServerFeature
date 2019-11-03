@@ -1,8 +1,10 @@
 package me.miunapa.paserverfeature.block;
 
 import me.miunapa.paserverfeature.FeatureStart;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.bukkit.event.Listener;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -11,126 +13,93 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockDispenseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Nameable;
 
 public class DispensePlanting extends FeatureStart implements Listener {
+    List<Material> seedList = Arrays.asList(Material.WHEAT_SEEDS, Material.POTATO, Material.CARROT,
+            Material.BEETROOT_SEEDS);
+    Map<Material, Material> growSeed = new HashMap<Material, Material>();
+
     @EventHandler
     public void onDispenseEvent(BlockDispenseEvent event) {
         Block block = event.getBlock();
+        // 偵測 發射器名字 --> 發射器方向
         String name = ((Nameable) block.getState()).getCustomName();
         if (name == null) {
             name = "noname";
+            return;
         }
-        if (name.equals("farm")) {
-            Material selectSeed = detectSelf(block);
-            if (selectSeed != null) {
-                Character mode = detectModeBlock(block);
-                if (mode != 'N') {
-                    farming(block, selectSeed, mode);
-                    event.setCancelled(true);
-                }
-            }
+        if (!name.equals("farm")) {
+            return;
         }
-    }
-
-    // 檢查發射器是否朝下 & 是否有種子
-    public Material detectSelf(Block block) {
-        Inventory inventory = ((Dispenser) block.getState()).getInventory();
         BlockFace blockFace =
                 ((org.bukkit.material.Dispenser) block.getState().getData()).getFacing();
-        if ((blockFace == BlockFace.DOWN)) {
-            List<Material> itemList = new ArrayList<Material>();
-            itemList = seedList(itemList);
-            Material selectSeed = null;
-            for (Material item : itemList) {
-                if (inventory.contains(item)) {
-                    selectSeed = item;
-                    break;
-                }
-            }
-            return selectSeed;
-        } else {
-            return null;
+        if (!(blockFace == BlockFace.DOWN)) {
+            return;
         }
-    }
+        event.setCancelled(true);
 
-    // 種子列表
-    public List<Material> seedList(List<Material> itemList) {
-        itemList.add(Material.WHEAT_SEEDS);
-        itemList.add(Material.POTATO);
-        itemList.add(Material.CARROT);
-        itemList.add(Material.BEETROOT_SEEDS);
-        return itemList;
-    }
-
-    // 檢查發射器上方的模式方塊
-    public Character detectModeBlock(Block block) {
+        // 偵測上方模式方塊
+        Integer range = null;
         Location upLocation =
                 new Location(block.getWorld(), block.getX(), block.getY() + 2, block.getZ());
         Block upBlock = upLocation.getBlock();
         if (upBlock.getType() == Material.HAY_BLOCK) {
-            return 'S';
+            range = 0;
         } else if (upBlock.getType() == Material.IRON_BLOCK) {
-            return 'M';
+            range = 1;
         } else if (upBlock.getType() == Material.DIAMOND_BLOCK) {
-            return 'L';
-        } else {
-            return 'N';
+            range = 2;
+        }
+        if (range != null) {
+            farming(block, range);
         }
     }
 
-    // 種植種子
-    public void farming(Block block, Material selectSeed, Character mode) {
-        int min = 0;
-        int max = 0;
-        if (mode == 'S') {
-            min = 0;
-            max = 1;
-        } else if (mode == 'M') {
-            min = -1;
-            max = 2;
-        } else if (mode == 'L') {
-            min = -2;
-            max = 3;
-        }
-        Material seedBlock = null;
-        if (selectSeed == Material.WHEAT_SEEDS) {
-            seedBlock = Material.WHEAT;
-        } else if (selectSeed == Material.POTATO) {
-            seedBlock = Material.POTATOES;
-        } else if (selectSeed == Material.CARROT) {
-            seedBlock = Material.CARROTS;
-        } else if (selectSeed == Material.BEETROOT_SEEDS) {
-            seedBlock = Material.BEETROOTS;
-        }
-        Dispenser dispenser = (Dispenser) block.getState();
-        Inventory inventory = dispenser.getInventory();
-        for (int i = min; i < max; i++) {
-            for (int j = min; j < max; j++) {
+    public void farming(Block block, Integer range) {
+        for (int i = -range; i <= range; i++) {
+            for (int j = -range; j <= range; j++) {
                 Location groundLocation = new Location(block.getWorld(), block.getX() + i,
                         block.getY() - 3, block.getZ() + j);
                 Location seedLocation = new Location(block.getWorld(), block.getX() + i,
                         block.getY() - 2, block.getZ() + j);
                 if ((groundLocation.getBlock().getType() == Material.FARMLAND)
                         && (seedLocation.getBlock().getType() == Material.AIR)) {
-                    for (ItemStack item : inventory.getContents()) {
-                        if (item != null) {
-                            if (item.getType() == selectSeed) {
-                                item.setAmount(item.getAmount() - 1);
-                                seedLocation.getBlock().setType(seedBlock);
-                                break;
+                    // 播種
+                    Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
+                        @Override
+                        public void run() {
+                            Dispenser dispenser = (Dispenser) block.getState();
+                            Inventory inventory = dispenser.getSnapshotInventory();
+                            ItemStack[] contents = inventory.getContents();
+                            for (int k = 0; k < contents.length; k++) {
+                                if (contents[k] != null) {
+                                    Material selectSeed = contents[k].getType();
+                                    if (seedList.contains(selectSeed)) {
+                                        Material seedBlock = growSeed.get(selectSeed);
+                                        contents[k].setAmount(contents[k].getAmount() - 1);
+                                        inventory.setContents(contents);
+                                        seedLocation.getBlock().setType(seedBlock);
+                                        break;
+                                    }
+                                }
                             }
+                            System.out.println(dispenser.update());
                         }
-                    }
+                    });
                 }
             }
         }
-        dispenser.update();
     }
 
     public DispensePlanting() {
         pm.registerEvents(this, plugin);
+        growSeed.put(Material.WHEAT_SEEDS, Material.WHEAT);
+        growSeed.put(Material.POTATO, Material.POTATOES);
+        growSeed.put(Material.CARROT, Material.CARROTS);
+        growSeed.put(Material.BEETROOT_SEEDS, Material.BEETROOTS);
     }
 }
