@@ -13,17 +13,24 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Nameable;
 
 public class DispensePlanting extends FeatureStart implements Listener {
     @EventHandler
     public void onDispenseEvent(BlockDispenseEvent event) {
         Block block = event.getBlock();
-        Material selectSeed = detectSelf(block);
-        if (selectSeed != null) {
-            Character mode = detectModeBlock(block);
-            if (mode != 'N') {
-                farming(block, selectSeed, mode);
-                event.setCancelled(true);
+        String name = ((Nameable) block.getState()).getCustomName();
+        if (name == null) {
+            name = "noname";
+        }
+        if (name.equals("farm")) {
+            Material selectSeed = detectSelf(block);
+            if (selectSeed != null) {
+                Character mode = detectModeBlock(block);
+                if (mode != 'N') {
+                    farming(block, selectSeed, mode);
+                    event.setCancelled(true);
+                }
             }
         }
     }
