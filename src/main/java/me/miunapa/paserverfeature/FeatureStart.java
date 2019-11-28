@@ -46,6 +46,7 @@ public class FeatureStart implements CommandExecutor {
         // new DispensePlanting();
         // command
         new Hat();
+        new PlayerIP();
         // entity
         new EntityExplosion();
         new TNTExplosion();

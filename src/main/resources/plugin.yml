@@ -1,6 +1,6 @@
 main: me.miunapa.paserverfeature.Main
 name: PAServerFeature
-version: 0.3
+version: 0.3.1
 api-version: 1.14
 
 commands:
@@ -12,8 +12,14 @@ commands:
     description: 戴帽子
     usage: /hat
     permission: paserverfeature.hat
+  getip:
+    description: 取得玩家IP(必須在線上)
+    usage: /getip
+    permission: paserverfeature.getip
 permissions:
   paserverfeature.paf:
     default: op
   paserverfeature.hat:
     default: true
+  paserverfeature.getip:
+    default: op
