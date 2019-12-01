@@ -15,12 +15,15 @@ public class BlockPlace extends FeatureStart implements Listener {
 
     @EventHandler
     public void onTrippedLog(BlockPlaceEvent event) {
-        if (trippedLogs.contains(event.getBlock().getType())) {
-            Material playerTool = event.getPlayer().getInventory().getItemInMainHand().getType();
-            if (axes.contains(playerTool)) {
-                event.getPlayer().sendMessage(
-                        ChatColor.GOLD + "若要取得剝皮原木" + ChatColor.WHITE + " 請將原木or木塊 排成同壓力版合成方式 取得");
-                event.setCancelled(true);
+        if (!config.getBoolean("TrippedLog")) {
+            if (trippedLogs.contains(event.getBlock().getType())) {
+                Material playerTool =
+                        event.getPlayer().getInventory().getItemInMainHand().getType();
+                if (axes.contains(playerTool)) {
+                    event.getPlayer().sendMessage(ChatColor.GOLD + "若要取得剝皮原木" + ChatColor.WHITE
+                            + " 請將原木or木塊 排成同壓力版合成方式 取得");
+                    event.setCancelled(true);
+                }
             }
         }
     }
@@ -46,6 +49,8 @@ public class BlockPlace extends FeatureStart implements Listener {
     }
 
     public BlockPlace() {
+        plugin.getConfig().addDefault("TrippedLog", false);
+        plugin.getConfig().options().copyDefaults(true);
         trippedLogListInit();
         pm.registerEvents(this, plugin);
     }
