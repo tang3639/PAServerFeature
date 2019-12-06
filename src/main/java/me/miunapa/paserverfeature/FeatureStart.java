@@ -22,6 +22,7 @@ public class FeatureStart {
         // command
         new Hat();
         new PlayerIP();
+        new Suicide();
         // entity
         new EntityExplosion();
         new TNTExplosion();

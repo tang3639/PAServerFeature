@@ -1,9 +1,13 @@
 main: me.miunapa.paserverfeature.Main
 name: PAServerFeature
-version: 0.3.2
+version: 0.3.3
 api-version: 1.14
 
 commands:
+  suicide:
+    description: 自殺
+    usage: /suicide
+    permission: paserverfeature.suicide
   hat:
     description: 戴帽子
     usage: /hat
@@ -19,3 +23,5 @@ permissions:
     default: true
   paserverfeature.getip:
     default: op
+  paserverfeature.suicide:
+    default: true
