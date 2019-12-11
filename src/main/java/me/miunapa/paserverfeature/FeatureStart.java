@@ -8,7 +8,6 @@ import me.miunapa.paserverfeature.block.*;
 import me.miunapa.paserverfeature.command.*;
 import me.miunapa.paserverfeature.entity.*;
 import me.miunapa.paserverfeature.player.*;
-import me.miunapa.paserverfeature.world.*;
 
 public class FeatureStart {
     public static Plugin plugin = Bukkit.getPluginManager().getPlugin("PAServerFeature");
@@ -29,7 +28,5 @@ public class FeatureStart {
         // player
         new Fishing();
         new PlayerDeath();
-        // world
-        new PhantomSpawn();
     }
 }

@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>me.miunapa.paserverfeature</groupId>
     <artifactId>PAServerFeature</artifactId>
-    <version>0.3.5</version>
+    <version>0.3.6</version>
     <name>PAServerFeature</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,6 +25,10 @@
         <repository>
             <id>mccommandapi</id>
             <url>https://raw.githubusercontent.com/JorelAli/1.13-Command-API/mvn-repo/1.13CommandAPI/</url>
+        </repository>
+        <repository>
+            <id>skullcreator-repo</id>
+            <url>https://dl.bintray.com/deanveloper/SkullCreator</url>
         </repository>
     </repositories>
     <dependencies>
@@ -50,6 +54,12 @@
             <artifactId>api</artifactId>
             <version>5.0</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.deanveloper</groupId>
+            <artifactId>skullcreator</artifactId>
+            <version>1.0.2</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
     <build>
