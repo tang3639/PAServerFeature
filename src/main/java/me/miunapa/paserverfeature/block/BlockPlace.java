@@ -4,10 +4,14 @@ import me.miunapa.paserverfeature.FeatureStart;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.TextComponent;
 
 public class BlockPlace extends FeatureStart implements Listener {
     List<Material> trippedLogs = new ArrayList<Material>();
@@ -17,11 +21,12 @@ public class BlockPlace extends FeatureStart implements Listener {
     public void onTrippedLog(BlockPlaceEvent event) {
         if (!config.getBoolean("TrippedLog")) {
             if (trippedLogs.contains(event.getBlock().getType())) {
-                Material playerTool =
-                        event.getPlayer().getInventory().getItemInMainHand().getType();
+                Player player = event.getPlayer();
+                Material playerTool = player.getInventory().getItemInMainHand().getType();
                 if (axes.contains(playerTool)) {
-                    event.getPlayer().sendMessage(ChatColor.GOLD + "若要取得剝皮原木" + ChatColor.WHITE
-                            + " 請將原木or木塊 排成同壓力版合成方式 取得");
+                    BaseComponent[] baseComponent = TextComponent.fromLegacyText(ChatColor.GOLD
+                            + "若要取得剝皮原木" + ChatColor.WHITE + " 請將原木or木塊 排成同壓力版合成方式 取得");
+                    player.spigot().sendMessage(ChatMessageType.ACTION_BAR, baseComponent);
                     event.setCancelled(true);
                 }
             }

@@ -1,6 +1,8 @@
 package me.miunapa.paserverfeature.player;
 
 import me.miunapa.paserverfeature.FeatureStart;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -32,7 +34,8 @@ public class PlayerDeath extends FeatureStart implements Listener {
                     player.setLevel(level);
                     player.sendMessage("§d你死亡了...  §7損失了§e" + less + "§7等經驗 剩下§e" + level + "§7等");
                 } else {
-                    player.sendMessage("§7因為等級未超過10等所以沒有死亡經驗懲罰");
+                    player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
+                            TextComponent.fromLegacyText("§7因為等級未超過10等所以沒有死亡經驗懲罰"));
                 }
             } else {
                 if (level > 20) {
@@ -45,7 +48,8 @@ public class PlayerDeath extends FeatureStart implements Listener {
                     player.setLevel(level);
                     player.sendMessage("§d你死亡了...  §7損失了§e" + less + "§7等經驗 剩下§e" + level + "§7等");
                 } else {
-                    player.sendMessage("§7因為等級未超過10等所以沒有死亡經驗懲罰");
+                    player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
+                            TextComponent.fromLegacyText("§7因為等級未超過10等所以沒有死亡經驗懲罰"));
                 }
             }
         }
