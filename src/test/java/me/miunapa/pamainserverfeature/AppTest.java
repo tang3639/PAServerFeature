@@ -1,4 +1,4 @@
-package me.miunapa.paserverfeature;
+package me.miunapa.pamainserverfeature;
 
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package me.miunapa.paserverfeature.command;
+package me.miunapa.pamainserverfeature.command;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import me.miunapa.paserverfeature.FeatureStart;
+import me.miunapa.pamainserverfeature.FeatureStart;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -17,7 +17,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Sound;
 
 public class Suicide extends FeatureStart implements CommandExecutor {
-    Plugin plugin = Bukkit.getPluginManager().getPlugin("PAServerFeature");
+    Plugin plugin = Bukkit.getPluginManager().getPlugin("pamainserverfeature");
     FileConfiguration config = plugin.getConfig();
     HashMap<UUID, Long> coolDown = new HashMap<UUID, Long>();
 

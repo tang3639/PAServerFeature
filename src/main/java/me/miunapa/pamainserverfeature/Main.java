@@ -1,4 +1,4 @@
-package me.miunapa.paserverfeature;
+package me.miunapa.pamainserverfeature;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -8,7 +8,7 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         FeatureStart featureStart = new FeatureStart();
         featureStart.init();
-        getLogger().info("PAServerFeature 啟動  Author:MiunaPA");
+        getLogger().info("pamainserverfeature 啟動  Author:MiunaPA");
     }
 
     @Override

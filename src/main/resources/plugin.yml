@@ -1,27 +1,27 @@
-main: me.miunapa.paserverfeature.Main
-name: PAServerFeature
-version: 0.4.0
+main: me.miunapa.pamainserverfeature.Main
+name: PAMainServerFeature
+version: 0.4.3
 api-version: 1.14
 
 commands:
   suicide:
     description: 自殺
     usage: /suicide
-    permission: paserverfeature.suicide
+    permission: pamainserverfeature.suicide
   hat:
     description: 戴帽子
     usage: /hat
-    permission: paserverfeature.hat
+    permission: pamainserverfeature.hat
   getip:
     description: 取得玩家IP(必須在線上)
     usage: /getip
-    permission: paserverfeature.getip
+    permission: pamainserverfeature.getip
 permissions:
-  paserverfeature.paf:
+  pamainserverfeature.paf:
     default: op
-  paserverfeature.hat:
+  pamainserverfeature.hat:
     default: true
-  paserverfeature.getip:
+  pamainserverfeature.getip:
     default: op
-  paserverfeature.suicide:
+  pamainserverfeature.suicide:
     default: true
