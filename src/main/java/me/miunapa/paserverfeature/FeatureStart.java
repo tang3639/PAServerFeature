@@ -6,7 +6,6 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import me.miunapa.paserverfeature.block.*;
 import me.miunapa.paserverfeature.command.*;
-import me.miunapa.paserverfeature.entity.*;
 import me.miunapa.paserverfeature.player.*;
 
 public class FeatureStart {
@@ -23,8 +22,6 @@ public class FeatureStart {
         new PlayerIP();
         new Suicide();
         // entity
-        new EntityExplosion();
-        new TNTExplosion();
         // player
         new Fishing();
         new PlayerDeath();
