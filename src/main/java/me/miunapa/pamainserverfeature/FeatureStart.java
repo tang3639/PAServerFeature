@@ -21,6 +21,7 @@ public class FeatureStart {
         // command
         new Hat();
         new PlayerIP();
+        new Rule();
         new Suicide();
         // entity
         new IronGlormSpawn();

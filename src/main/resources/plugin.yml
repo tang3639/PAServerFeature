@@ -1,6 +1,6 @@
 main: me.miunapa.pamainserverfeature.Main
 name: PAMainServerFeature
-version: 0.4.4
+version: 0.4.5
 api-version: 1.14
 
 commands:
@@ -16,6 +16,10 @@ commands:
     description: 取得玩家IP(必須在線上)
     usage: /getip
     permission: pamainserverfeature.getip
+  rule:
+    description: 伺服器規定
+    usage: /rule
+    permission: pamainserverfeature.rule
 permissions:
   pamainserverfeature.paf:
     default: op
@@ -27,3 +31,5 @@ permissions:
     default: true
   pamainserverfeature.bypasslimit:
     default: op
+  pamainserverfeature.rule:
+    default: true

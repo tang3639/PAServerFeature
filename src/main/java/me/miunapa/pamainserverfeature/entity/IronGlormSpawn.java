@@ -1,18 +1,13 @@
 package me.miunapa.pamainserverfeature.entity;
 
-import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
-import org.bukkit.plugin.Plugin;
 import me.miunapa.pamainserverfeature.FeatureStart;
 
 public class IronGlormSpawn extends FeatureStart implements Listener {
-    Plugin plugin = Bukkit.getPluginManager().getPlugin("pamainserverfeature");
-    FileConfiguration config = plugin.getConfig();
 
     @EventHandler
     public void ironGlormSpawnEvent(CreatureSpawnEvent event) {
