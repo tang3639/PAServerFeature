@@ -25,3 +25,5 @@ permissions:
     default: op
   pamainserverfeature.suicide:
     default: true
+  pamainserverfeature.bypasslimit:
+    default: op

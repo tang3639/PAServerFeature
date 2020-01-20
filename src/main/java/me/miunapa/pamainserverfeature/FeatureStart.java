@@ -7,6 +7,7 @@ import org.bukkit.plugin.PluginManager;
 import me.miunapa.pamainserverfeature.block.*;
 import me.miunapa.pamainserverfeature.command.*;
 import me.miunapa.pamainserverfeature.entity.IronGlormSpawn;
+import me.miunapa.pamainserverfeature.feature.PlayerLimitBypass;
 import me.miunapa.pamainserverfeature.player.*;
 
 public class FeatureStart {
@@ -17,13 +18,14 @@ public class FeatureStart {
     public void init() {
         // block
         new BlockPlace();
-        // new DispensePlanting();
         // command
         new Hat();
         new PlayerIP();
         new Suicide();
         // entity
         new IronGlormSpawn();
+        // feature
+        new PlayerLimitBypass();
         // player
         new PlayerDeath();
     }
