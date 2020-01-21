@@ -20,6 +20,10 @@ commands:
     description: 伺服器規定
     usage: /rule
     permission: pamainserverfeature.rule
+  rules:
+    description: 伺服器規定
+    usage: /rules
+    permission: pamainserverfeature.rule
 permissions:
   pamainserverfeature.paf:
     default: op

@@ -25,6 +25,7 @@ public class Rule extends FeatureStart implements CommandExecutor {
 
     public Rule() {
         Bukkit.getPluginCommand("rule").setExecutor(this);
+        Bukkit.getPluginCommand("rules").setExecutor(this);
         List<String> list = new ArrayList<String>();
         list.add("伺服器規定");
         plugin.getConfig().addDefault("rule", list);
