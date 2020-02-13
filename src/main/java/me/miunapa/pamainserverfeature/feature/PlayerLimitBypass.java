@@ -14,6 +14,8 @@ public class PlayerLimitBypass extends FeatureStart implements Listener {
             if (event.getPlayer().hasPermission("pamainserverfeature.bypasslimit")) {
                 event.allow();
                 event.getPlayer().sendMessage(ChatColor.GOLD + "你擁有滿人加入伺服器的權限");
+            } else if (!event.getPlayer().hasPlayedBefore()) {
+                event.allow();
             }
         }
     }
