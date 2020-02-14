@@ -47,6 +47,7 @@ public class Suicide extends FeatureStart implements CommandExecutor {
     public Suicide() {
         Bukkit.getPluginCommand("suicide").setExecutor(this);
         plugin.getConfig().addDefault("SuicideCoolDown", 60);
+        plugin.getConfig().options().copyDefaults(true);
         plugin.saveConfig();
         plugin.reloadConfig();
     }
