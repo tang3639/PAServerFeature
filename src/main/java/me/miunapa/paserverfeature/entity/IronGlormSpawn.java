@@ -1,11 +1,11 @@
-package me.miunapa.pamainserverfeature.entity;
+package me.miunapa.paserverfeature.entity;
 
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
-import me.miunapa.pamainserverfeature.FeatureStart;
+import me.miunapa.paserverfeature.FeatureStart;
 
 public class IronGlormSpawn extends FeatureStart implements Listener {
 

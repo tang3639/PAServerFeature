@@ -1,10 +1,10 @@
-package me.miunapa.pamainserverfeature.command;
+package me.miunapa.paserverfeature.command;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import me.miunapa.pamainserverfeature.FeatureStart;
+import me.miunapa.paserverfeature.FeatureStart;
 import net.md_5.bungee.api.ChatColor;
 import java.util.ArrayList;
 import java.util.List;

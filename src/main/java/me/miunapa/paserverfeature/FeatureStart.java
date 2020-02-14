@@ -1,18 +1,18 @@
-package me.miunapa.pamainserverfeature;
+package me.miunapa.paserverfeature;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
-import me.miunapa.pamainserverfeature.block.*;
-import me.miunapa.pamainserverfeature.command.*;
-import me.miunapa.pamainserverfeature.entity.IronGlormSpawn;
-import me.miunapa.pamainserverfeature.feature.NewPlayer;
-import me.miunapa.pamainserverfeature.feature.PlayerLimitBypass;
-import me.miunapa.pamainserverfeature.player.*;
+import me.miunapa.paserverfeature.block.*;
+import me.miunapa.paserverfeature.command.*;
+import me.miunapa.paserverfeature.entity.IronGlormSpawn;
+import me.miunapa.paserverfeature.feature.NewPlayer;
+import me.miunapa.paserverfeature.feature.PlayerLimitBypass;
+import me.miunapa.paserverfeature.player.*;
 
 public class FeatureStart {
-    public static Plugin plugin = Bukkit.getPluginManager().getPlugin("PAMainServerFeature");
+    public static Plugin plugin = Bukkit.getPluginManager().getPlugin("paserverfeature");
     public static FileConfiguration config = plugin.getConfig();
     public static PluginManager pm = Bukkit.getPluginManager();
 

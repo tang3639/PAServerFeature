@@ -1,4 +1,4 @@
-package me.miunapa.pamainserverfeature.command;
+package me.miunapa.paserverfeature.command;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

@@ -1,4 +1,4 @@
-package me.miunapa.pamainserverfeature.feature;
+package me.miunapa.paserverfeature.feature;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import me.miunapa.pamainserverfeature.FeatureStart;
+import me.miunapa.paserverfeature.FeatureStart;
 import net.md_5.bungee.api.ChatColor;
 
 public class NewPlayer extends FeatureStart implements Listener {

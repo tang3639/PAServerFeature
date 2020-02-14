@@ -1,4 +1,4 @@
-package me.miunapa.pamainserverfeature.command;
+package me.miunapa.paserverfeature.command;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
