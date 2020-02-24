@@ -6,7 +6,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import me.miunapa.paserverfeature.block.*;
 import me.miunapa.paserverfeature.command.*;
-import me.miunapa.paserverfeature.entity.IronGlormSpawn;
+import me.miunapa.paserverfeature.entity.*;
 import me.miunapa.paserverfeature.feature.NewPlayer;
 import me.miunapa.paserverfeature.feature.PlayerLimitBypass;
 import me.miunapa.paserverfeature.player.*;
@@ -25,7 +25,7 @@ public class FeatureStart {
         new Rule();
         new Suicide();
         // entity
-        new IronGlormSpawn();
+        new EntitySpawn();
         // feature
         new PlayerLimitBypass();
         new NewPlayer();
