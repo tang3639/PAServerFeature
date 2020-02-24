@@ -7,8 +7,7 @@ import org.bukkit.plugin.PluginManager;
 import me.miunapa.paserverfeature.block.*;
 import me.miunapa.paserverfeature.command.*;
 import me.miunapa.paserverfeature.entity.*;
-import me.miunapa.paserverfeature.feature.NewPlayer;
-import me.miunapa.paserverfeature.feature.PlayerLimitBypass;
+import me.miunapa.paserverfeature.feature.*;
 import me.miunapa.paserverfeature.player.*;
 
 public class FeatureStart {
