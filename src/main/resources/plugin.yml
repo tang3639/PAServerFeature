@@ -1,6 +1,6 @@
 main: me.miunapa.paserverfeature.Main
 name: PAServerFeature
-version: 0.5.3
+version: 0.6.0
 api-version: 1.15
 
 commands:
@@ -24,9 +24,11 @@ commands:
     description: 伺服器規定
     usage: /rules
     permission: paserverfeature.rule
+  signature:
+    description: 地圖複製
+    usage: /sign
+    permission: paserverfeature.signature
 permissions:
-  paserverfeature.paf:
-    default: op
   paserverfeature.hat:
     default: true
   paserverfeature.getip:
@@ -36,4 +38,6 @@ permissions:
   paserverfeature.bypasslimit:
     default: op
   paserverfeature.rule:
+    default: true
+  paserverfeature.signature:
     default: true
