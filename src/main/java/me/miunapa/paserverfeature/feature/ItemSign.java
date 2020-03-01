@@ -67,6 +67,8 @@ public class ItemSign extends FeatureStart implements Listener, CommandExecutor 
                     signAdd(player);
                 } else if (args[0].equals("remove")) {
                     signRemove(player);
+                } else if (args[0].equals("fremove")) {
+                    signRemove(player);
                 } else {
                     player.sendMessage(ChatColor.LIGHT_PURPLE + "署名指令錯誤! " + ChatColor.GOLD
                             + "為物品署名：" + ChatColor.RED + "/signature add" + ChatColor.GOLD

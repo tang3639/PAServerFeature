@@ -41,7 +41,7 @@ public class NewPlayer extends FeatureStart implements Listener {
         itemMeta.setDisplayName(ChatColor.GREEN + "歡迎 " + ChatColor.RED + player.getName()
                 + ChatColor.GREEN + " 加入 " + ChatColor.AQUA + "來自風平浪靜的伺服器");
         lore.add(ChatColor.YELLOW + "請先輸入 " + ChatColor.RED + "/rules");
-        lore.add(ChatColor.GOLD + "查看伺服器說明喔");
+        lore.add(ChatColor.GOLD + "查看伺服器新手教學喔");
         lore.add(ChatColor.LIGHT_PURPLE + "新玩家一定要看!!");
         itemMeta.setLore(lore);
         itemMeta.addEnchant(Enchantment.ARROW_DAMAGE, 1, true);

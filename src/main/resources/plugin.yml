@@ -1,6 +1,6 @@
 main: me.miunapa.paserverfeature.Main
 name: PAServerFeature
-version: 0.6.1
+version: 0.7dev1
 api-version: 1.15
 
 commands:
@@ -28,6 +28,10 @@ commands:
     description: 地圖複製
     usage: /signature
     permission: paserverfeature.signature
+  pvp:
+    description: pvp指令
+    usage: /pvp
+    permission: paserverfeature.pvp
 permissions:
   paserverfeature.hat:
     default: true
@@ -41,3 +45,7 @@ permissions:
     default: true
   paserverfeature.signature:
     default: true
+  paserverfeature.pvp:
+    default: true
+  paserverfeature.pvpbypass:
+    default: op
