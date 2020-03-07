@@ -2,8 +2,7 @@ package me.miunapa.paserverfeature;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Main extends JavaPlugin {
-
+public class PAServerFeature extends JavaPlugin {
     @Override
     public void onEnable() {
         FeatureStart featureStart = new FeatureStart();
