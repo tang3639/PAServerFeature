@@ -39,46 +39,60 @@ public class PVP extends FeatureStart implements Listener, CommandExecutor {
     File pvpFile = new File(plugin.getDataFolder(), "pvp_status.yml");
     YamlConfiguration pvp = YamlConfiguration.loadConfiguration(pvpFile);
 
-    public PVP() {
-        pm.registerEvents(this, plugin);
-        Bukkit.getPluginCommand("pvp").setExecutor(this);
-        if (!pvpFile.exists()) {
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            String playerUUID = player.getUniqueId().toString();
+            if (args.length != 0) {
+                if (!pvp.getBoolean(playerUUID)) {
+                    player.sendMessage(ChatColor.GREEN + "你目前的PVP是開的!");
+                } else {
+                    player.sendMessage(ChatColor.RED + "你目前的PVP是關的!");
+                }
+                return true;
+            }
+            if (!player.hasPermission("paserverfeature.pvpbypass")) {
+                if (pvpCoolDown.containsKey(player.getUniqueId())) {
+                    Long interval =
+                            System.currentTimeMillis() - pvpCoolDown.get(player.getUniqueId());
+                    if (interval <= config.getInt("PVPCoolDown") * 1000) {
+                        Long cd = config.getInt("PVPCoolDown")
+                                - (interval - (interval % 1000)) / 1000;
+                        player.sendMessage(
+                                ChatColor.RED + "PVP切換冷卻中! 請等待 " + ChatColor.YELLOW + cd + " 秒");
+                        return true;
+                    }
+                }
+            }
+            if (pvp.getBoolean(playerUUID) == true) {
+                player.sendMessage(ChatColor.LIGHT_PURPLE + "關閉 PVP!");
+                pvp.set(playerUUID, false);
+                savePvpFile();
+                pvpCoolDown.put(player.getUniqueId(), System.currentTimeMillis());
+            } else {
+                player.sendMessage(ChatColor.YELLOW + "開啟 PVP!");
+                pvp.set(playerUUID, true);
+                savePvpFile();
+                pvpCoolDown.put(player.getUniqueId(), System.currentTimeMillis());
+            }
             savePvpFile();
+        } else {
+            sender.sendMessage(ChatColor.RED + "只有玩家能使用該指令");
         }
-        plugin.getConfig().addDefault("PVPCoolDown", 30);
-        plugin.getConfig().options().copyDefaults(true);
-        plugin.saveConfig();
-        plugin.reloadConfig();
+        return true;
     }
 
     public void savePvpFile() {
         try {
             pvp.save(pvpFile);
+            pvp = YamlConfiguration.loadConfiguration(pvpFile);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    void pvpMapCheck(Player player) {
-        if (!pvp.isConfigurationSection(player.getUniqueId().toString())) {
-            pvp.set(player.getUniqueId().toString(), false);
-            savePvpFile();
-        }
-    }
-
-    void pvpMapCheck(Player player1, Player player2) {
-        if (!pvp.isConfigurationSection(player1.getUniqueId().toString())) {
-            pvp.set(player1.getUniqueId().toString(), false);
-            savePvpFile();
-        }
-        if (!pvp.isConfigurationSection(player2.getUniqueId().toString())) {
-            pvp.set(player2.getUniqueId().toString(), false);
-            savePvpFile();
-        }
-    }
-
-    boolean pvpDisableDetect(Player damager, Player injured, String typeMessage) {
-        pvpMapCheck(damager, injured);
+    public boolean pvpDisableDetect(Player damager, Player injured, String typeMessage) {
         String damagerUUID = damager.getUniqueId().toString();
         String injuredUUID = injured.getUniqueId().toString();
         if (damager.hasPermission("paserverfeature.pvpbypass")) {
@@ -109,61 +123,13 @@ public class PVP extends FeatureStart implements Listener, CommandExecutor {
         }
     }
 
-    boolean pvpDisableDetect(Player injured, String typeMessage) {
-        pvpMapCheck(injured);
+    public boolean pvpDisableDetect(Player injured, String typeMessage) {
         String injuredUUID = injured.getUniqueId().toString();
         if (!pvp.getBoolean(injuredUUID)) {
             return true;
         } else {
             return false;
         }
-    }
-
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-            pvpMapCheck(player);
-            String playerUUID = player.getUniqueId().toString();
-            if (args.length != 0) {
-                if (!pvp.getBoolean(playerUUID)) {
-                    player.sendMessage(ChatColor.GREEN + "你目前的PVP是開的!");
-                } else {
-                    player.sendMessage(ChatColor.RED + "你目前的PVP是關的!");
-                }
-                return true;
-            }
-            if (!player.hasPermission("paserverfeature.pvpbypass")) {
-                if (pvpCoolDown.containsKey(player.getUniqueId())) {
-                    Long interval =
-                            System.currentTimeMillis() - pvpCoolDown.get(player.getUniqueId());
-                    if (interval <= config.getInt("PVPCoolDown") * 1000) {
-                        Long cd = config.getInt("PVPCoolDown")
-                                - (interval - (interval % 1000)) / 1000;
-                        player.sendMessage(
-                                ChatColor.RED + "PVP切換冷卻中! 請等待 " + ChatColor.YELLOW + cd + " 秒");
-                        return true;
-                    }
-                }
-            }
-            if (pvp.getBoolean(playerUUID) == true) {
-                player.sendMessage(ChatColor.LIGHT_PURPLE + "關閉PVP!");
-                pvp.set(playerUUID, false);
-                savePvpFile();
-                player.sendMessage(Boolean.toString(pvp.getBoolean(playerUUID)));
-                pvpCoolDown.put(player.getUniqueId(), System.currentTimeMillis());
-            } else {
-                player.sendMessage(ChatColor.YELLOW + "開啟 PVP!");
-                pvp.set(playerUUID, true);
-                savePvpFile();
-                player.sendMessage(Boolean.toString(pvp.getBoolean(playerUUID)));
-                pvpCoolDown.put(player.getUniqueId(), System.currentTimeMillis());
-            }
-            savePvpFile();
-        } else {
-            sender.sendMessage(ChatColor.RED + "只有玩家能使用該指令");
-        }
-        return true;
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.LOWEST)
@@ -259,5 +225,17 @@ public class PVP extends FeatureStart implements Listener, CommandExecutor {
             event.getLightning().setMetadata("TRIDENT",
                     new FixedMetadataValue(plugin, event.getLightning().getLocation()));
         }
+    }
+
+    public PVP() {
+        pm.registerEvents(this, plugin);
+        Bukkit.getPluginCommand("pvp").setExecutor(this);
+        if (!pvpFile.exists()) {
+            savePvpFile();
+        }
+        plugin.getConfig().addDefault("PVPCoolDown", 30);
+        plugin.getConfig().options().copyDefaults(true);
+        plugin.saveConfig();
+        plugin.reloadConfig();
     }
 }
