@@ -22,7 +22,7 @@ public class BeeCount extends FeatureStart implements Listener {
         Action action = event.getAction();
         if (action == Action.RIGHT_CLICK_BLOCK) {
             ItemStack item = player.getInventory().getItemInMainHand();
-            if (item.getType().equals(Material.STICK)) {
+            if (item.getType().equals(Material.BONE)) {
                 Block block = event.getClickedBlock();
                 if (block.getType().equals(Material.BEEHIVE)
                         || block.getType().equals(Material.BEE_NEST)) {
