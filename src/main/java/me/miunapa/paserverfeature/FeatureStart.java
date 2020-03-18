@@ -25,11 +25,12 @@ public class FeatureStart {
         new Rule();
         new Suicide();
         // entity
-        new ItemSign();
         new EntitySpawn();
         // feature
-        new PlayerLimitBypass();
+        new BeeCount();
+        new ItemSign();
         new NewPlayer();
+        new PlayerLimitBypass();
         // player
         new PlayerDeath();
     }
