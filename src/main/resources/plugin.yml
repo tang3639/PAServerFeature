@@ -33,6 +33,10 @@ commands:
     description: pvp指令
     usage: /pvp
     permission: paserverfeature.pvp
+  gh:
+    description: 頭顱
+    usage: /gh
+    permission: paserverfeature.gh
 permissions:
   paserverfeature.hat:
     default: true
