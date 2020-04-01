@@ -20,7 +20,6 @@ public class FeatureStart {
         new BlockPlace();
         // command
         new Hat();
-        new PlayerIP();
         new PVP();
         new Rule();
         new Suicide();
