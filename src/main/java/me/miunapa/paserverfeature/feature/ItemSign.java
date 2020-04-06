@@ -44,8 +44,10 @@ public class ItemSign extends FeatureStart implements Listener, CommandExecutor 
                 ItemMeta meta = item.getItemMeta();
                 if (meta.hasLore()) {
                     if (ChatColor.stripColor(meta.getLore().get(0)).equals("已署名")) {
-                        event.getWhoClicked().sendMessage(ChatColor.RED + "已署名的地圖是不能複製的");
-                        event.setCancelled(true);
+                        if (event.getSlot() == 2) {
+                            event.getWhoClicked().sendMessage(ChatColor.RED + "已署名的地圖是不能複製的");
+                            event.getWhoClicked().closeInventory();
+                        }
                     }
                 }
             }
