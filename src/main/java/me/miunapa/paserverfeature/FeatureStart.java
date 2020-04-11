@@ -26,6 +26,7 @@ public class FeatureStart {
         new LockChange();
         // entity
         new EntitySpawn();
+        new EntityBreed();
         // feature
         new BeeCount();
         new ItemSign();
