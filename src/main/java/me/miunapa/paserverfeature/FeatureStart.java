@@ -23,6 +23,7 @@ public class FeatureStart {
         new PVP();
         new Rule();
         new Suicide();
+        new LockChange();
         // entity
         new EntitySpawn();
         // feature

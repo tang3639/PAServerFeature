@@ -1,6 +1,6 @@
 main: me.miunapa.paserverfeature.PAServerFeature
 name: PAServerFeature
-version: 0.7.6
+version: 0.7.7
 api-version: 1.15
 #depend: [NBTAPI]
 
@@ -33,6 +33,10 @@ commands:
     description: pvp指令
     usage: /pvp
     permission: paserverfeature.pvp
+  lc:
+    description: 更改鎖箱子指令
+    usage: /lc
+    permission: paserverfeature.lc
 permissions:
   paserverfeature.hat:
     default: true
@@ -49,4 +53,6 @@ permissions:
   paserverfeature.pvp:
     default: true
   paserverfeature.pvpbypass:
+    default: op
+  paserverfeature.lc:
     default: op
