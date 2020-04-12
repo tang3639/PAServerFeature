@@ -28,15 +28,19 @@ public class LockChange extends FeatureStart implements Listener, CommandExecuto
         if (action == Action.RIGHT_CLICK_BLOCK) {
             if (signList.contains(event.getClickedBlock().getType())) {
                 Sign sign = (Sign) event.getClickedBlock().getState();
+                boolean edit = false;
                 for (int i = 0; i < sign.getLines().length; i++) {
                     if (changeName.containsKey(sign.getLine(i))) {
                         player.sendMessage(ChatColor.GREEN + "已更改ID " + ChatColor.YELLOW
                                 + sign.getLine(i) + ChatColor.GOLD + " ----> " + ChatColor.YELLOW
                                 + changeName.get(sign.getLine(i)));
                         sign.setLine(i, changeName.get(sign.getLine(i)));
+                        edit = true;
                     }
                 }
-                sign.update();
+                if (edit) {
+                    sign.update();
+                }
             }
         }
     }
