@@ -140,14 +140,20 @@ public class PVP extends FeatureStart implements Listener, CommandExecutor {
         } else if (event.getDamager() instanceof Projectile) {
             Projectile arrow = (Projectile) event.getDamager();
             if (arrow.getShooter() instanceof Player && event.getEntity() instanceof Player) {
-                event.setCancelled(pvpDisableDetect((Player) arrow.getShooter(),
-                        (Player) event.getEntity(), "投射物"));
+                Player shooter = (Player) arrow.getShooter();
+                Player injured = (Player) event.getEntity();
+                if (shooter.getUniqueId() != injured.getUniqueId()) {
+                    event.setCancelled(pvpDisableDetect(shooter, injured, "投射物"));
+                }
             }
         } else if (event.getDamager() instanceof ThrownPotion) {
             ThrownPotion potion = (ThrownPotion) event.getDamager();
             if (potion.getShooter() instanceof Player && event.getEntity() instanceof Player) {
-                event.setCancelled(pvpDisableDetect((Player) potion.getShooter(),
-                        (Player) event.getEntity(), "藥水"));
+                Player shooter = (Player) potion.getShooter();
+                Player injured = (Player) event.getEntity();
+                if (shooter.getUniqueId() != injured.getUniqueId()) {
+                    event.setCancelled(pvpDisableDetect(shooter, injured, "藥水"));
+                }
             }
         } else if (event.getDamager() instanceof LightningStrike
                 && event.getDamager().getMetadata("TRIDENT").size() >= 1
@@ -163,8 +169,11 @@ public class PVP extends FeatureStart implements Listener, CommandExecutor {
         if (event.getCombuster() instanceof Arrow) {
             Arrow arrow = (Arrow) event.getCombuster();
             if (arrow.getShooter() instanceof Player && event.getEntity() instanceof Player) {
-                event.setCancelled(pvpDisableDetect((Player) arrow.getShooter(),
-                        (Player) event.getEntity(), "燃燒箭矢"));
+                Player shooter = (Player) arrow.getShooter();
+                Player injured = (Player) event.getEntity();
+                if (shooter.getUniqueId() != injured.getUniqueId()) {
+                    event.setCancelled(pvpDisableDetect(shooter, injured, "燃燒箭矢"));
+                }
             }
         }
     }
@@ -177,7 +186,7 @@ public class PVP extends FeatureStart implements Listener, CommandExecutor {
             for (LivingEntity injuredEntity : affected) {
                 if (injuredEntity instanceof Player) {
                     Player injured = (Player) injuredEntity;
-                    if (damager != injured) {
+                    if (damager.getUniqueId() != injured.getUniqueId()) {
                         if (pvpDisableDetect(damager, (Player) injured, "飛濺藥水")) {
                             event.setIntensity(injuredEntity, 0);
                         }
@@ -196,7 +205,7 @@ public class PVP extends FeatureStart implements Listener, CommandExecutor {
                 LivingEntity injuredEntity = it.next();
                 if (injuredEntity instanceof Player && injuredEntity != null) {
                     Player injured = (Player) injuredEntity;
-                    if (damager != injured) {
+                    if (damager.getUniqueId() != injured.getUniqueId()) {
                         if (pvpDisableDetect(damager, (Player) injured, "滯留藥水")) {
                             it.remove();
                         }
