@@ -70,7 +70,11 @@ public class ItemSign extends FeatureStart implements Listener, CommandExecutor 
                 } else if (args[0].equals("remove")) {
                     signRemove(player);
                 } else if (args[0].equals("fremove")) {
-                    signRemove(player);
+                    if (player.hasPermission("paserverfeature.signatureforce") || player.isOp()) {
+                        signRemove(player, true);
+                    } else {
+                        player.sendMessage(ChatColor.RED + "你沒有權限使用強制移除署名");
+                    }
                 } else {
                     player.sendMessage(ChatColor.LIGHT_PURPLE + "署名指令錯誤! " + ChatColor.GOLD
                             + "為物品署名：" + ChatColor.RED + "/signature add" + ChatColor.GOLD
@@ -113,6 +117,10 @@ public class ItemSign extends FeatureStart implements Listener, CommandExecutor 
     }
 
     void signRemove(Player player) {
+        signRemove(player, false);
+    }
+
+    void signRemove(Player player, boolean forceRemove) {
         PlayerInventory inv = player.getInventory();
         ItemStack item = inv.getItemInMainHand();
         ItemMeta meta = item.getItemMeta();
@@ -128,7 +136,15 @@ public class ItemSign extends FeatureStart implements Listener, CommandExecutor 
                         player.updateInventory();
                         player.sendMessage(ChatColor.LIGHT_PURPLE + "已將物品解除署名!");
                     } else {
-                        player.sendMessage(ChatColor.RED + "只能由署名的玩家解除署名");
+                        if (forceRemove) {
+                            lore.clear();
+                            meta.setLore(lore);
+                            item.setItemMeta(meta);
+                            player.updateInventory();
+                            player.sendMessage(ChatColor.LIGHT_PURPLE + "已將物品強制解除署名!");
+                        } else {
+                            player.sendMessage(ChatColor.RED + "只能由署名的玩家解除署名");
+                        }
                     }
                 } else {
                     player.sendMessage(ChatColor.RED + "本身帶有物品說明的物品不能署名! 因此也沒辦法解除署名!");

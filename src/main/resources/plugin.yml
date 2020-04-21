@@ -1,6 +1,6 @@
 main: me.miunapa.paserverfeature.PAServerFeature
 name: PAServerFeature
-version: 0.7.10
+version: 0.7.11
 api-version: 1.15
 #depend: [NBTAPI]
 
@@ -50,6 +50,8 @@ permissions:
     default: true
   paserverfeature.signature:
     default: true
+  paserverfeature.signatureforce:
+    default: op
   paserverfeature.pvp:
     default: true
   paserverfeature.pvpbypass:
