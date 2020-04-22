@@ -32,6 +32,7 @@ public class FeatureStart {
         new ItemSign();
         new NewPlayer();
         new PlayerLimitBypass();
+        new ArmorStandEditor();
         // player
         new PlayerDeath();
     }
