@@ -37,6 +37,10 @@ commands:
     description: 更改鎖箱子指令
     usage: /lc
     permission: paserverfeature.lc
+  aseditor:
+    description: 獲取盔甲架編輯用棒棒
+    usage: /aseditor
+    permission: paserverfeature.aseditor
 permissions:
   paserverfeature.hat:
     default: true
@@ -57,4 +61,8 @@ permissions:
   paserverfeature.pvpbypass:
     default: op
   paserverfeature.lc:
+    default: op
+  paserverfeature.aseditor:
+    default: op
+  paserverfeature.aseditor.getitem:
     default: op
