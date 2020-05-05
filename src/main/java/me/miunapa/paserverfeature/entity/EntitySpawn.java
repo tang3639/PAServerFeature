@@ -16,6 +16,7 @@ import net.md_5.bungee.api.chat.ComponentBuilder;
 
 public class EntitySpawn extends FeatureStart implements Listener {
     Integer pigCount = 0;
+    Integer ironGolemCount = 0;
 
     @EventHandler
     public void EntitySpawnEvent(CreatureSpawnEvent event) {
@@ -24,6 +25,26 @@ public class EntitySpawn extends FeatureStart implements Listener {
             Double chance = config.getDouble("EntitySpawn.IronGlorm");
             if (random > chance && event.getSpawnReason() == SpawnReason.VILLAGE_DEFENSE) {
                 event.setCancelled(true);
+            }
+            if (ironGolemCount >= config.getInt("EntitySpawn.IronGlorm")) {
+                ironGolemCount = 0;
+                Integer clearCount = 0;
+                for (Entity e : Bukkit.getWorld("world").getEntities()) {
+                    if (e.getType() == EntityType.IRON_GOLEM) {
+                        if (e.getCustomName() == null) {
+                            LivingEntity entity = (LivingEntity) e;
+                            entity.setHealth(0.0);
+                            clearCount += 1;
+                        }
+                    } else if (e.getType() == EntityType.SNOWBALL) {
+                        e.remove();
+                    }
+                }
+                for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+                    player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
+                            new ComponentBuilder("已自動清潔鐵巨人 : ").color(ChatColor.RED)
+                                    .append(clearCount.toString()).color(ChatColor.GREEN).create());
+                }
             }
         } else if (event.getEntityType().equals(EntityType.PIG_ZOMBIE)) {
             pigCount += 1;
@@ -58,6 +79,7 @@ public class EntitySpawn extends FeatureStart implements Listener {
     public EntitySpawn() {
         pm.registerEvents(this, plugin);
         plugin.getConfig().addDefault("EntitySpawn.IronGlorm", 0.2);
+        plugin.getConfig().addDefault("EntitySpawn.IronGlorm_Count", 1000);
         plugin.getConfig().addDefault("EntitySpawn.ZombiePigman", 0.0);
         plugin.getConfig().addDefault("EntitySpawn.ZombiePigman_Count", 1000);
         plugin.getConfig().options().copyDefaults(true);
