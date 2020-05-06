@@ -25,6 +25,8 @@ public class EntitySpawn extends FeatureStart implements Listener {
             Double chance = config.getDouble("EntitySpawn.IronGlorm");
             if (random > chance && event.getSpawnReason() == SpawnReason.VILLAGE_DEFENSE) {
                 event.setCancelled(true);
+            } else {
+                ironGolemCount += 1;
             }
             if (ironGolemCount >= config.getInt("EntitySpawn.IronGlorm")) {
                 ironGolemCount = 0;
@@ -47,11 +49,12 @@ public class EntitySpawn extends FeatureStart implements Listener {
                 }
             }
         } else if (event.getEntityType().equals(EntityType.PIG_ZOMBIE)) {
-            pigCount += 1;
             Double random = Math.random();
             Double chance = config.getDouble("EntitySpawn.ZombiePigman");
             if (random > chance && event.getSpawnReason() == SpawnReason.NETHER_PORTAL) {
                 event.setCancelled(true);
+            } else {
+                pigCount += 1;
             }
             if (pigCount >= config.getInt("EntitySpawn.ZombiePigman_Count")) {
                 pigCount = 0;
