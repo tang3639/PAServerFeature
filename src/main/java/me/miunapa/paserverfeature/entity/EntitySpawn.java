@@ -28,7 +28,7 @@ public class EntitySpawn extends FeatureStart implements Listener {
             } else {
                 ironGolemCount += 1;
             }
-            if (ironGolemCount >= config.getInt("EntitySpawn.IronGlorm")) {
+            if (ironGolemCount >= config.getInt("EntitySpawn.IronGlorm_Count")) {
                 ironGolemCount = 0;
                 Integer clearCount = 0;
                 for (Entity e : Bukkit.getWorld("world").getEntities()) {
