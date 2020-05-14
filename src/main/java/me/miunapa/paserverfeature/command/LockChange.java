@@ -9,6 +9,7 @@ import org.bukkit.block.Sign;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,7 +18,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import me.miunapa.paserverfeature.FeatureStart;
 import net.md_5.bungee.api.ChatColor;
 
-public class LockChange extends FeatureStart implements Listener, CommandExecutor {
+public class LockChange extends FeatureStart implements Listener, CommandExecutor, TabCompleter {
     List<Material> signList = new ArrayList<Material>();
     HashMap<String, String> changeName = new HashMap<String, String>();
 
@@ -64,6 +65,18 @@ public class LockChange extends FeatureStart implements Listener, CommandExecuto
                     + ChatColor.RED + "/lc clear");
         }
         return true;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias,
+            String[] args) {
+        if (command.getName().equalsIgnoreCase("lc") && args.length == 1) {
+            List<String> tabList = new ArrayList<String>();
+            tabList.add("add");
+            tabList.add("clear");
+            return tabList;
+        }
+        return null;
     }
 
     void testList() {

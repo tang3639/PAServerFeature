@@ -7,6 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,7 +20,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import me.miunapa.paserverfeature.FeatureStart;
 import net.md_5.bungee.api.ChatColor;
 
-public class ItemSign extends FeatureStart implements Listener, CommandExecutor {
+public class ItemSign extends FeatureStart implements Listener, CommandExecutor, TabCompleter {
 
     @EventHandler
     public void onPrepareItemCraftEvent(PrepareItemCraftEvent event) {
@@ -88,6 +89,18 @@ public class ItemSign extends FeatureStart implements Listener, CommandExecutor 
             sender.sendMessage(ChatColor.RED + "只有玩家能使用該指令");
         }
         return true;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias,
+            String[] args) {
+        if (command.getName().equalsIgnoreCase("signature") && args.length == 1) {
+            List<String> tabList = new ArrayList<String>();
+            tabList.add("add");
+            tabList.add("remove");
+            return tabList;
+        }
+        return null;
     }
 
     void signAdd(Player player) {
