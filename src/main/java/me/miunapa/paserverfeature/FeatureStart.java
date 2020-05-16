@@ -27,6 +27,7 @@ public class FeatureStart {
         // entity
         new EntitySpawn();
         new EntityBreed();
+        new ProtectVillage();
         // feature
         new BeeCount();
         new ItemSign();
